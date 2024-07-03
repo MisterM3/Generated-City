@@ -15,4 +15,15 @@ public static class RandomHelper
         }
         else return false;
     }
+
+    public static bool Percentage(float percentage)
+    {
+        float randomInt = Random.Range(0f, 1f);
+
+        if (randomInt < percentage)
+        {
+            return true;
+        }
+        else return false;
+    }
 }

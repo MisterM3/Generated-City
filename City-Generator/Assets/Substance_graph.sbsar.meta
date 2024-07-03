@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 80e804e5460c5b547bdc125dc3998df3
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: d292afd661f7f3441b7bdc03e991f09b, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/Substance_graph.sbsar
