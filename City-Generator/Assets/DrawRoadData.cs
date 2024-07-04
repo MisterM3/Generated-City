@@ -223,6 +223,33 @@ public class DrawRoadData : MonoBehaviour
 
         bool intersects = false;
 
+
+        for(int i = roadPositions.Count - 1; i >= 0; i--)
+        {
+            RoadPosition roadPosition = roadPositions[i];
+
+            if (RoadHelpers.LineLineIntersection(out Vector3 intersection, pos, roadPosition))
+            {
+                if (intersection == pos.startPos)
+                    continue;
+                pos.endPos = intersection;
+                intersects = true;
+
+                RoadPosition splitRoadOne = new RoadPosition() { startPos = roadPosition.startPos, endPos = intersection };
+                RoadPosition splitRoadTwo = new RoadPosition() { startPos = intersection, endPos = roadPosition.endPos };
+
+                roadPositions.RemoveAt(i);
+
+                removedRoadPositions.Add(roadPosition);
+
+                if (splitRoadOne.endPos - splitRoadOne.startPos != Vector3.zero)
+                    roadPositions.Add(splitRoadOne);
+                if (splitRoadTwo.endPos - splitRoadTwo.startPos != Vector3.zero)
+                    roadPositions.Add(splitRoadTwo);
+
+            }
+        }
+
         foreach (RoadPosition roadPosition in roadPositions)
         {
             if (RoadHelpers.LineLineIntersection(out Vector3 intersection, pos, roadPosition))
@@ -348,11 +375,11 @@ public class DrawRoadData : MonoBehaviour
             Gizmos.DrawLine(road.startPos, road.endPos);
         }
 
-        return;
 
         Gizmos.color = Color.blue;
 
-        
+        if (removedRoadPositions.Count == null)
+            return;
 
         if (removedRoadPositions.Count != 0)
         {
