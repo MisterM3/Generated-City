@@ -8,6 +8,7 @@ public class Test : MonoBehaviour
 
     [SerializeField] DrawRoadData data;
     [SerializeField] MakeRoadsVisuals visuals;
+    [SerializeField] DrawSquare SQUARE;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +20,13 @@ public class Test : MonoBehaviour
     {
         data.DrawRoads();
         visuals.DrawRoads();
+    }
+
+    [ContextMenu("Make All")]
+    public void MakeAll()
+    {
+        data.DrawRoads();
+        visuals.DrawRoads();
+        SQUARE.DrawBigSquare();
     }
 }

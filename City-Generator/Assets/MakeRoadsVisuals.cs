@@ -10,6 +10,9 @@ public class MakeRoadsVisuals : MonoBehaviour
     [SerializeField] Transform _parent;
 
 
+    [SerializeField] GameObject _prefabCrossRoad;
+
+
     [ContextMenu("DrawRoads")]
     public void DrawRoads()
     {
@@ -25,6 +28,11 @@ public class MakeRoadsVisuals : MonoBehaviour
         foreach(RoadPosition roadPosition in roadPositions)
         {
             DrawRoad(roadPosition);
+        }
+
+        foreach(CrossRoadData crossRoad in _drawData.CrossRoadData)
+        {
+            DrawCrossRoads(crossRoad);
         }
 
     }
@@ -47,9 +55,8 @@ public class MakeRoadsVisuals : MonoBehaviour
         Transform roadTransform = roadObject.transform;
         roadTransform.SetParent(_parent);
 
-        
-
-        Vector3 scaleOld = direction.Abs() - (Vector3.one * 5);
+        roadObject.hideFlags = HideFlags.HideInHierarchy;
+        Vector3 scaleOld = (direction.Abs() / 2f) - (Vector3.one * 5);
         
 
         Vector3 scale = Vector3.Max(scaleOld, Vector3.one * 5);
@@ -76,5 +83,11 @@ public class MakeRoadsVisuals : MonoBehaviour
 
 
 
+    }
+
+
+    private void DrawCrossRoads(CrossRoadData data)
+    {
+        Instantiate(_prefabCrossRoad, data.Position, Quaternion.identity, _parent);
     }
 }

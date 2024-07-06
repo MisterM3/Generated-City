@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 
 public class DrawRoadData : MonoBehaviour
@@ -11,6 +12,7 @@ public class DrawRoadData : MonoBehaviour
 
 
     [SerializeField] private List<CrossRoadData> crossRoadData;
+    public List<CrossRoadData> CrossRoadData => crossRoadData;
 
     private List<RoadPosition> removedRoadPositions;
 
@@ -64,7 +66,14 @@ public class DrawRoadData : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
+            Debug.Log("click");
             OneRoadIteration();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("clccick");
+            CheckRoads();
         }
     }
 
@@ -81,6 +90,162 @@ public class DrawRoadData : MonoBehaviour
                 endPointDirectionDictionary.RemoveAt(i);
             }
         }
+    }
+
+    public void CheckRoads()
+    {
+
+
+
+
+
+        //Remove short deadend roads
+        for(int i = roadPositions.Count - 1; i >= 0; i--)
+        {
+
+            RoadPosition roadPosition = roadPositions[i];
+
+            if (roadPosition.GetDistance() > minDistance)
+                continue;
+            Debug.Log("_______________");
+            Debug.Log(roadPosition.startPos);
+            Debug.Log(roadPosition.endPos);
+            Debug.Log(roadPosition.GetDistance());
+            Debug.Log("_______________");
+
+            bool test = false;
+            foreach (RoadPosition secondRoadPosition in roadPositions)
+            {
+                if (secondRoadPosition == roadPosition)
+                    continue;
+
+                if (roadPosition.endPos == secondRoadPosition.startPos || roadPosition.endPos == secondRoadPosition.endPos)
+                {
+                    Debug.Log(roadPosition.endPos);
+                    Debug.Log(roadPosition.endPos == secondRoadPosition.startPos);
+                    Debug.Log(roadPosition.endPos == secondRoadPosition.endPos);
+                    test = true;
+                    break;
+                }
+
+            }
+
+            if (!test)
+            {
+                Debug.Log("test");
+                roadPositions.RemoveAt(i);
+            }
+        }
+
+        for (int i = roadPositions.Count - 1; i >= 0; i--)
+        {
+            RoadPosition roadOne = roadPositions[i];
+            Vector3 endPosRoad = roadOne.endPos;
+
+            for(int j = roadPositions.Count - 1; j >= 0; j--)
+            {
+
+                RoadPosition roadTwo = roadPositions[j];
+                if (roadOne == roadTwo)
+                    continue;
+
+                if (roadOne.IsParralel(roadTwo))
+                    continue;
+
+                float distance = roadTwo.GetClosestPointToLine(endPosRoad);
+
+                if (distance >= minDistance || distance == 0)
+                    continue;
+
+
+                //Check if it's a dead end before continuing
+
+                /*
+                if (roadOne.endPos == roadTwo.startPos || roadOne.endPos == roadTwo.startPos)
+                {
+                    
+                }
+                */
+
+                roadOne.endPos += roadOne.GetDirection().normalized * distance;
+                roadPositions[i] = roadOne;
+                break;
+            }
+        }
+
+    }
+
+
+    public bool CheckRoad(out RoadPosition outRoad, RoadPosition road)
+    {
+        
+            RoadPosition roadPosition = road;
+
+        if (roadPosition.GetDistance() > minDistance)
+        {
+            outRoad = road;
+            return true;
+        }
+
+            Debug.Log("_______________");
+            Debug.Log(roadPosition.startPos);
+            Debug.Log(roadPosition.endPos);
+            Debug.Log(roadPosition.GetDistance());
+            Debug.Log("_______________");
+
+            bool test = false;
+        foreach (RoadPosition secondRoadPosition in roadPositions)
+        {
+            if (secondRoadPosition == roadPosition)
+                continue;
+
+            if (roadPosition.endPos == secondRoadPosition.startPos || roadPosition.endPos == secondRoadPosition.endPos)
+            {
+                Debug.Log(roadPosition.endPos);
+                Debug.Log(roadPosition.endPos == secondRoadPosition.startPos);
+                Debug.Log(roadPosition.endPos == secondRoadPosition.endPos);
+                test = true;
+                break;
+            }
+
+        }
+
+        if (!test)
+        {
+            outRoad = road;
+            outRoad.endPos = Vector3.zero;
+            return false;
+        }
+        
+
+            RoadPosition roadOne = road;
+            Vector3 endPosRoad = roadOne.endPos;
+
+            for (int j = roadPositions.Count - 1; j >= 0; j--)
+            {
+
+                RoadPosition roadTwo = roadPositions[j];
+                if (roadOne == roadTwo)
+                    continue;
+
+                if (roadOne.IsParralel(roadTwo))
+                    continue;
+
+                float distance = roadTwo.GetClosestPointToLine(endPosRoad);
+
+                if (distance >= minDistance || distance == 0)
+                    continue;
+
+
+                roadOne.endPos += roadOne.GetDirection().normalized * distance;
+
+                outRoad = roadOne;
+                return false;
+            
+        }
+        outRoad = roadOne;
+        return false;
+
     }
 
     [ContextMenu("TestRoads")]
@@ -121,6 +286,9 @@ public class DrawRoadData : MonoBehaviour
                 await AddNewLine(rs.startPos, rs.direction);
                 endPointDirectionDictionary.RemoveAt(i);
             }
+
+          
+
         }
 
 
@@ -223,6 +391,7 @@ public class DrawRoadData : MonoBehaviour
 
         bool intersects = false;
 
+        
 
         for(int i = roadPositions.Count - 1; i >= 0; i--)
         {
@@ -234,6 +403,8 @@ public class DrawRoadData : MonoBehaviour
                     continue;
                 pos.endPos = intersection;
                 intersects = true;
+
+                
 
                 RoadPosition splitRoadOne = new RoadPosition() { startPos = roadPosition.startPos, endPos = intersection };
                 RoadPosition splitRoadTwo = new RoadPosition() { startPos = intersection, endPos = roadPosition.endPos };
@@ -247,11 +418,26 @@ public class DrawRoadData : MonoBehaviour
                 if (splitRoadTwo.endPos - splitRoadTwo.startPos != Vector3.zero)
                     roadPositions.Add(splitRoadTwo);
 
+
+                
             }
         }
 
         foreach (RoadPosition roadPosition in roadPositions)
         {
+            if (!pos.TryDistanceParralel(out float distance, roadPosition))
+                continue;
+
+            
+
+            if (distance <= minDistance)
+            {
+                removedRoadPositions.Add(pos);
+                amountLeft++;
+                return;
+            }
+
+            /*
             if (RoadHelpers.LineLineIntersection(out Vector3 intersection, pos, roadPosition))
             {
                 if (intersection == pos.startPos)
@@ -259,6 +445,7 @@ public class DrawRoadData : MonoBehaviour
                 pos.endPos = intersection;
                 intersects = true;
             }
+            */
         }
 
         roadPositions.Add(pos);
@@ -268,15 +455,15 @@ public class DrawRoadData : MonoBehaviour
         if (intersects) return;
 
 
-        if (RandomHelper.CoinToss())
+        if (RandomHelper.Percentage(.66f))
         {
             AddToList(pos.endPos, Quaternion.AngleAxis(90, Vector3.up) * direction);
         }
-        if (RandomHelper.CoinToss())
+        if (RandomHelper.Percentage(.66f))
         {
             AddToList(pos.endPos, Quaternion.AngleAxis(-90, Vector3.up) * direction);
         }
-        if (RandomHelper.CoinToss())
+        if (RandomHelper.Percentage(.66f))
         {
             AddToList(pos.endPos, direction);
         }
@@ -338,21 +525,15 @@ public class DrawRoadData : MonoBehaviour
         if (intersectRoadPosition.startPos != Vector3.zero)
         {
          //   roadPosition.endPos = intersectRoadPosition.startPos;
-            Debug.Log("got one");
+
 
             var dif = roadPosition.endPos - roadPosition.startPos;
 
-            Debug.Log(dif);
 
-            if ((dif.normalized == Vector3.forward) || (dif.normalized == Vector3.back))
-                Debug.Log("ome");
-            if ((dif.normalized == Vector3.left) || (dif.normalized == Vector3.right))
-                Debug.Log("fa");
 
 
             if (RoadHelpers.LineLineFarIntersection(out Vector3 intersection, intersectRoadPosition, roadPosition))
             {
-                Debug.Log("true");
                 roadPosition.endPos = intersection;
             }
         }
@@ -375,6 +556,8 @@ public class DrawRoadData : MonoBehaviour
             Gizmos.DrawLine(road.startPos, road.endPos);
         }
 
+   
+        return;
 
         Gizmos.color = Color.blue;
 
@@ -391,6 +574,8 @@ public class DrawRoadData : MonoBehaviour
                 Gizmos.DrawLine(rp, removedRoadPositions[i].endPos);
             }
         }
+
+        return;
 
         if (needConnectingPositions.Count == 0)
         {
@@ -414,11 +599,112 @@ public struct RoadPosition
 {
     public Vector3 startPos;
     public Vector3 endPos;
+
+    private Vector3 direction;
+
+    private Ray roadRay;
+
+    public Ray GetRay()
+    {
+        if (roadRay.direction != Vector3.zero)
+            return roadRay;
+
+        roadRay = new();
+        roadRay.origin = startPos;
+        roadRay.direction = endPos - startPos;
+        return roadRay;
+    }
+
+    public override string ToString()
+    {
+        return $"StartPos: {startPos}, Endpos: {endPos}";
+    }
+
+    public float GetClosestPointToLine(Vector3 point)
+    {
+        return HandleUtility.DistancePointLine(point, startPos, endPos);
+    }
+
+    public bool IsParralel(RoadPosition otherRoad)
+    {
+        Debug.Log(this.GetDirection().normalized.Abs());
+        Debug.Log(otherRoad.GetDirection().normalized.Abs());
+        return (this.GetDirection().normalized.Abs() == otherRoad.GetDirection().normalized.Abs());
+    }
+
+    public bool TryDistanceParralel(out float distance, RoadPosition otherRoad)
+    {
+        if (!this.IsParralel(otherRoad))
+        {
+            distance = float.MaxValue;
+            return false;
+        }
+
+       
+
+        if (GetDirection().normalized.Abs() == Vector3.right)
+        {
+            //Check if line is over eachother
+            if ((otherRoad.startPos.x >= this.startPos.x && otherRoad.startPos.x < this.endPos.x) ||
+                (otherRoad.endPos.x >= this.startPos.x && otherRoad.endPos.x < this.endPos.x) ||
+                (this.startPos.x >= otherRoad.startPos.x && this.startPos.x < otherRoad.endPos.x) ||
+                (this.endPos.x >= otherRoad.startPos.x && this.endPos.x < otherRoad.endPos.x))
+            {
+                distance = Mathf.Abs(otherRoad.endPos.x - this.endPos.x);
+                return true;
+            }
+        }
+        else
+        {
+            //Check if line is over eachother
+            if ((otherRoad.startPos.z >= this.startPos.z && otherRoad.startPos.z < this.endPos.z) ||
+                (otherRoad.endPos.z >= this.startPos.z && otherRoad.endPos.z < this.endPos.z) ||
+                (this.startPos.z >= otherRoad.startPos.z && this.startPos.z < otherRoad.endPos.z) ||
+                (this.endPos.z >= otherRoad.startPos.z && this.endPos.z < otherRoad.endPos.z))
+            {
+                distance = Mathf.Abs(otherRoad.endPos.z - this.endPos.z);
+                return true;
+            }
+        }
+
+        distance = float.MaxValue;
+        return false;
+       
+
+    }
+
+    public Vector3 GetDirection()
+    {
+        if (direction != Vector3.zero)
+            return direction;
+
+        direction = endPos - startPos;
+        return direction;
+    }
+
+    public float GetDistance()
+    {
+        if (direction != Vector3.zero)
+            return direction.magnitude;
+
+        direction = endPos - startPos;
+        return direction.magnitude;
+    }
+
+    public static bool operator ==(RoadPosition rp1, RoadPosition rp2)
+    {
+        return (rp1.startPos == rp2.startPos && rp1.endPos == rp2.endPos);
+    }
+
+    public static bool operator !=(RoadPosition rp1, RoadPosition rp2)
+    {
+        return !(rp1 == rp2);
+    }
+
 }
 
 public struct RoadSave
 {
     public Vector3 startPos;
     public Vector3 direction;
-
 }
