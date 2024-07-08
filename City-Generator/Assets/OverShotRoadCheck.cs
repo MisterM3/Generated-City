@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OverShotRoadCheck : CheckRoadSO
+public class OverShotRoadCheck : MonoBehaviour
 {
     
 }
