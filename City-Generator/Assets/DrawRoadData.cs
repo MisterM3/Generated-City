@@ -763,7 +763,7 @@ public struct RoadPosition
 
     public Directions GetDirectionEnum()
     {
-        Vector3 direction = GetDirection();
+        Vector3 direction = GetNormalizedDirection();
 
         if (direction == Vector3.forward)
         {

@@ -12,6 +12,7 @@ public class MakeRoadsVisuals : MonoBehaviour
 
     [SerializeField] GameObject _prefabCrossRoad;
 
+    [SerializeField] MakeCrossRoadsVisuals visuals;
 
     [ContextMenu("DrawRoads")]
     public void DrawRoads()
@@ -32,7 +33,7 @@ public class MakeRoadsVisuals : MonoBehaviour
 
         foreach(CrossRoadData crossRoad in _drawData.CrossRoadData)
         {
-            DrawCrossRoads(crossRoad);
+            visuals.MakeCrossRoad(crossRoad);
         }
 
     }
@@ -60,6 +61,12 @@ public class MakeRoadsVisuals : MonoBehaviour
         
 
         Vector3 scale = Vector3.Max(scaleOld, Vector3.one * 5);
+
+        if (scale == Vector3.one * 5)
+        {
+            DestroyImmediate(roadObject);
+            return;
+        }
 
         if (direction.normalized.Abs() == Vector3.right)
         {

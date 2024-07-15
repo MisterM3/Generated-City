@@ -8,6 +8,7 @@ public class CrossRoadData
     [SerializeField] Vector3 _position;
     public Vector3 Position => _position;
     [SerializeField] List<Directions> _directions;
+    public List<Directions> Directions => _directions;
 
     public CrossRoadData(Vector3 position, List<Directions> directions = null)
     {
