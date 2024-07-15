@@ -225,7 +225,6 @@ public class DrawRoadData : MonoBehaviour
             }
         }
 
-       
 
     }
 
@@ -296,15 +295,13 @@ public class DrawRoadData : MonoBehaviour
 
                 if (dirFirst == Vector3.zero)
                 {
-                    dirFirst = roadPosition.endPos - roadPosition.startPos;
-                    dirFirst = dirFirst.normalized.Abs();
+                    dirFirst = roadPosition.GetNormalizedDirection().Abs();
                     indexOne = j;
                     continue;
                 }
                 else if (dirSecond == Vector3.zero)
                 {
-                    dirSecond = roadPosition.endPos - roadPosition.startPos;
-                    dirSecond = dirSecond.normalized.Abs();
+                    dirSecond = roadPosition.GetNormalizedDirection().Abs();
                     indexTwo = j;
                     continue;
                 }
@@ -324,8 +321,9 @@ public class DrawRoadData : MonoBehaviour
 
                 RoadPosition rd = roadPositions[indexOne];
                 rd.startPos = roadPositions[indexTwo].startPos;
-                roadPositions[indexOne] = rd;
+              //  roadPositions.Add(rd);
                 Debug.Log(roadPositions[indexOne].startPos + " : " + roadPositions[indexOne].endPos);
+                roadPositions.RemoveAt(indexOne);
                 roadPositions.RemoveAt(indexTwo);
 
             }
@@ -654,6 +652,28 @@ public class DrawRoadData : MonoBehaviour
 
                 Gizmos.DrawLine(rp, removedRoadPositions[i].endPos);
             }
+        }
+
+        foreach (RoadPosition road in roadPositions)
+        {
+            //    Gizmos.DrawLine(road.startPos, road.endPos);
+
+            Gizmos.color = Color.green;
+
+            foreach (RoadPosition road2 in roadPositions)
+            {
+                if (road == road2)
+                    continue;
+
+                if (!road.SameStartEndPoint(road2))
+                    continue;
+
+                if (road.GetDirection() != road2.GetDirection())
+                    continue;
+
+                Gizmos.DrawLine(road.startPos, road.endPos);
+            }
+
         }
 
         return;
