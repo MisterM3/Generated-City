@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 1442
+  controlID: 116
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 1440
+  controlID: 114
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 1441
+  controlID: 115
   draggingID: 0
 --- !u!114 &9
 MonoBehaviour:
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 58
+  controlID: 80
   draggingID: 0
 --- !u!114 &14
 MonoBehaviour:
@@ -442,17 +442,22 @@ MonoBehaviour:
     m_SaveData: []
     m_OverlaysVisible: 1
   horizontalLines: 10
-  verticalLines: 10
+  verticalLines: 12
   sizeRoad: 5
   widthPlot: 30
-  heightPlot: 20
+  heightPlot: 25
   parentObject: {fileID: 0}
-  minHeight: 2
-  maxHeight: 20
+  minHeight: 30
+  maxHeight: 60
   sizeFromStreet: 4
-  maxStreetDeviation: 3
+  maxBuildingDeviation: 4
   seed: 50
   randomSeed: 0
+  meshPlane: {fileID: 919132149155446097, guid: 755a8336c42683d45955ca17f3d78ca5,
+    type: 3}
+  meshCrossRoad: {fileID: 919132149155446097, guid: e0cad2583de107643b40c6b05a5c0ea2,
+    type: 3}
+  meshRoad: {fileID: 919132149155446097, guid: eb682e99f671fd643927b964e294af54, type: 3}
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -492,8 +497,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -156, y: -26}
-      snapOffsetDelta: {x: -15, y: 0}
+      snapOffset: {x: -171, y: -26}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -849,9 +854,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -5.257106, y: 18.90426, z: 57.127193}
+    m_Target: {x: 25.730541, y: 4.838477, z: -81.88223}
     speed: 2
-    m_Value: {x: -5.257106, y: 18.90426, z: 57.127193}
+    m_Value: {x: 25.730541, y: 4.838477, z: -81.88223}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -897,9 +902,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.02471287, y: 0.85811484, z: -0.511247, w: 0.04147878}
+    m_Target: {x: -0.16130716, y: -0.061227053, z: 0.0099836225, w: -0.985066}
     speed: 2
-    m_Value: {x: 0.024649821, y: 0.8588525, z: -0.5099425, w: 0.04151443}
+    m_Value: {x: -0.16130716, y: -0.061227053, z: 0.009983623, w: -0.985066}
   m_Size:
     m_Target: 10
     speed: 2
@@ -1065,9 +1070,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a683ffff
-      m_LastClickedID: -31834
-      m_ExpandedIDs: 0cfbffff
+      m_SelectedIDs: 00730000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 2efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1112,9 +1117,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 480
+    x: 469
     y: 634
-    width: 984
+    width: 959
     height: 365
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -1137,7 +1142,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Editor
+    - Assets/Meshes
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1145,16 +1150,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Editor
+  - Assets/Meshes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Game Development\Unity\Projects\School\Still Working on\Generated-City\City-Generator
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b2740000
-    m_LastClickedID: 29874
-    m_ExpandedIDs: 000000005a730000
+    m_SelectedIDs: fe740000
+    m_LastClickedID: 29950
+    m_ExpandedIDs: 0000000058810000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1182,7 +1187,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005a730000
+    m_ExpandedIDs: 0000000058810000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1207,8 +1212,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: b6740000
-    m_LastClickedInstanceID: 29878
+    m_SelectedInstanceIDs: 9ef7feff
+    m_LastClickedInstanceID: -67682
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000727a0000
     m_RenameOverlay:
@@ -1226,7 +1231,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 15}
+      m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

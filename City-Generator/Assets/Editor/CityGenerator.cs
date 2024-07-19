@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -46,8 +47,13 @@ public class CityGenerator : EditorWindow
     public int seed;
     public bool randomSeed;
 
+    public GameObject meshPlane;
+    public GameObject meshCrossRoad;
+    public GameObject meshRoad;
 
-
+    private SerializedProperty propMeshPlane;
+    private SerializedProperty propMeshCrossRoad;
+    private SerializedProperty propMeshRoad;
     private SerializedProperty propMinHeight;
     private SerializedProperty propMaxHeight;
     private SerializedProperty propSizeFromStreet;
@@ -79,13 +85,18 @@ public class CityGenerator : EditorWindow
         propMaxHeight = so.FindProperty(nameof(maxHeight));
         propSizeFromStreet = so.FindProperty(nameof(sizeFromStreet));
         propMaxStreetDeviation = so.FindProperty(nameof(maxBuildingDeviation));
+
+        propMeshPlane = so.FindProperty(nameof(meshPlane));
+        propMeshCrossRoad = so.FindProperty(nameof(meshCrossRoad));
+        propMeshRoad = so.FindProperty(nameof(meshRoad));
     }
 
     private void DrawPreview(SceneView sceneView)
     {
         if (parentObject == null)
             return;
-
+        return;
+    
         DrawRoads();
         DrawHouses();
 
@@ -189,10 +200,189 @@ public class CityGenerator : EditorWindow
         EditorGUILayout.PropertyField(propSizeFromStreet);
         EditorGUILayout.PropertyField(propMaxStreetDeviation);
 
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.PropertyField(propMeshPlane);
+        EditorGUILayout.PropertyField(propMeshCrossRoad);
+        EditorGUILayout.PropertyField(propMeshRoad);
+
+        if (GUILayout.Button("test"))
+        {
+            MakeBase();
+        }
+
 
         if (so.ApplyModifiedProperties())
         {
             SceneView.RepaintAll();
         }
+    }
+
+
+    private void MakeBase()
+    {
+
+        RemoveOldObjects();
+
+        GameObject plots = new("Plots");
+        plots.transform.SetParent(parentObject, false);
+
+        GameObject crossRoads = new("Crossroad");
+        crossRoads.transform.SetParent(parentObject, false);
+
+        GameObject roads = new("Roads");
+        roads.transform.SetParent(parentObject, false);
+
+        for (int i = 0; i < horizontalLines; i++)
+        {
+            for (int j = 0; j < verticalLines; j++)
+            {
+                MakePlot(plots, i, j);
+                MakeCrossRoad(crossRoads, i, j);
+                MakeRoads(roads, i, j);
+            }
+        }
+
+        SetStaticFlags();
+    }
+
+    private void SetStaticFlags()
+    {
+        StaticEditorFlags flags = GameObjectUtility.GetStaticEditorFlags(parentObject.gameObject);
+        SetStaticFlagsChildrenRecursive(parentObject, flags);
+    }
+
+    private void SetStaticFlagsChildrenRecursive(Transform tf, StaticEditorFlags flags)
+    {
+        GameObjectUtility.SetStaticEditorFlags(tf.gameObject, flags);
+
+        if (tf.childCount == 0)
+            return;
+        
+        for (int i = parentObject.childCount - 1; i >= 0; i--)
+        {
+            SetStaticFlagsChildrenRecursive(tf.GetChild(i), flags);
+        }
+    }
+
+    private void RemoveOldObjects()
+    {
+        for(int i = parentObject.childCount - 1; i >= 0; i--)
+        {
+            DestroyImmediate(parentObject.GetChild(i).gameObject);
+        }
+    }
+
+    private void MakeCrossRoad(GameObject parent, int indexWidth, int indexHeight)
+    {
+        float totalWidth = verticalLines * sizeRoad + (verticalLines - 1) * widthPlot;
+        float halfWidth = totalWidth / 2f;
+        float totalHeight = horizontalLines * sizeRoad + (horizontalLines - 1) * heightPlot;
+        float halfHeight = totalHeight / 2f;
+
+        float incrementWidth = sizeRoad + widthPlot;
+        float incrementHeight = sizeRoad + heightPlot;
+
+        Vector3 center = parentObject.position;
+        Vector3 size = new Vector3(sizeRoad / 2f, 1, sizeRoad / 2f);
+
+        float xCoord = center.x + (sizeRoad/2f) - halfWidth + incrementWidth * indexHeight;
+        float zCoord = center.z + (sizeRoad / 2f) - halfHeight + incrementHeight * indexWidth;
+
+        Vector3 centerLine = new Vector3(xCoord, center.y + center.y, zCoord);
+
+        GameObject go = Instantiate(meshCrossRoad, parent.transform);
+        go.transform.localScale = size;
+        go.transform.position = centerLine;
+    }
+
+    private void MakePlot(GameObject plots, int indexWidth, int indexHeight)
+    {
+        if (indexWidth >= horizontalLines - 1)
+            return;
+        if (indexHeight >= verticalLines - 1)
+            return;
+
+        float totalWidth = verticalLines * sizeRoad + (verticalLines - 1) * widthPlot;
+        float halfWidth = totalWidth / 2f;
+        float totalHeight = horizontalLines * sizeRoad + (horizontalLines - 1) * heightPlot;
+        float halfHeight = totalHeight / 2f;
+
+        float incrementWidth = sizeRoad + widthPlot;
+        float incrementHeight = sizeRoad + heightPlot;
+
+        Vector3 center = parentObject.position;
+        Vector3 size = new Vector3(widthPlot / 2f, 1, heightPlot / 2f);
+
+        float xCoord = center.x + sizeRoad + (widthPlot / 2f) - halfWidth + incrementWidth * indexHeight;
+        float zCoord = center.z + sizeRoad + (heightPlot / 2f) - halfHeight + incrementHeight * indexWidth;
+
+        Vector3 centerLine = new Vector3(xCoord, center.y + center.y, zCoord);
+
+        GameObject go = Instantiate(meshPlane, plots.transform);
+        go.transform.localScale = size;
+        go.transform.position = centerLine;
+
+    }
+
+    private void MakeRoads(GameObject parent, int indexWidth, int indexHeight)
+    {
+        if (indexWidth < horizontalLines - 1)
+            MakeVerticalRoads(parent, indexWidth, indexHeight);
+        if (indexHeight < verticalLines - 1)
+         MakeHorizontalRoads(parent, indexWidth, indexHeight);
+
+    }
+
+    private void MakeVerticalRoads(GameObject parent, int indexWidth, int indexHeight)
+    {
+        float totalWidth = verticalLines * sizeRoad + (verticalLines - 1) * widthPlot;
+        float halfWidth = totalWidth / 2f;
+        float totalHeight = horizontalLines * sizeRoad + (horizontalLines - 1) * heightPlot;
+        float halfHeight = totalHeight / 2f;
+
+        float incrementWidth = sizeRoad + widthPlot;
+        float incrementHeight = sizeRoad + heightPlot;
+
+        Vector3 center = parentObject.position;
+
+
+        Vector3 size = new Vector3((sizeRoad / 2f), 1, (heightPlot / 2f));
+
+        float xCoord = center.x + (sizeRoad / 2f) - halfWidth + incrementWidth * indexHeight;
+        float zCoord = center.z + sizeRoad + (heightPlot / 2f) - halfHeight + incrementHeight * indexWidth;
+
+        Vector3 centerLine = new Vector3(xCoord, center.y, zCoord);
+
+        Quaternion rot = Quaternion.identity;
+
+        GameObject go = Instantiate(meshRoad, centerLine, rot, parent.transform);
+        go.transform.localScale = size;
+    }
+
+    private void MakeHorizontalRoads(GameObject parent, int indexWidth, int indexHeight)
+    {
+        float totalWidth = verticalLines * sizeRoad + (verticalLines - 1) * widthPlot;
+        float halfWidth = totalWidth / 2f;
+        float totalHeight = horizontalLines * sizeRoad + (horizontalLines - 1) * heightPlot;
+        float halfHeight = totalHeight / 2f;
+
+        float incrementWidth = sizeRoad + widthPlot;
+        float incrementHeight = sizeRoad + heightPlot;
+
+        Vector3 center = parentObject.position;
+
+       
+        Vector3 size = new Vector3((sizeRoad / 2f), 1, widthPlot / 2f);
+
+        float xCoord = center.x + sizeRoad + (widthPlot / 2f) - halfWidth + incrementWidth * indexHeight;
+        float zCoord = center.z + (sizeRoad / 2f) - halfHeight + incrementHeight * indexWidth;
+
+        Vector3 centerLine = new Vector3(xCoord, center.y, zCoord);
+
+        Quaternion rot = Quaternion.Euler(0, 90, 0);
+
+        GameObject go = Instantiate(meshRoad, centerLine, rot, parent.transform);
+        go.transform.localScale = size;
     }
 }
