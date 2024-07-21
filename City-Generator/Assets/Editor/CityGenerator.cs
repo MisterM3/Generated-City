@@ -44,16 +44,22 @@ public class CityGenerator : EditorWindow
     public float sizeFromStreet;
 
     public float maxBuildingDeviation;
-    public int seed;
+    public int seed = 10;
     public bool randomSeed;
 
     public GameObject meshPlane;
     public GameObject meshCrossRoad;
     public GameObject meshRoad;
 
+    public GameObject buildingObject;
+
+
     private SerializedProperty propMeshPlane;
     private SerializedProperty propMeshCrossRoad;
     private SerializedProperty propMeshRoad;
+
+    private SerializedProperty propBuildingObject;
+
     private SerializedProperty propMinHeight;
     private SerializedProperty propMaxHeight;
     private SerializedProperty propSizeFromStreet;
@@ -65,6 +71,8 @@ public class CityGenerator : EditorWindow
     {
         SetupSerializedObject();
         SceneView.duringSceneGui += DrawPreview;
+
+        UnityEngine.Random.InitState(seed);
     }
 
     private void OnDisable()
@@ -89,6 +97,7 @@ public class CityGenerator : EditorWindow
         propMeshPlane = so.FindProperty(nameof(meshPlane));
         propMeshCrossRoad = so.FindProperty(nameof(meshCrossRoad));
         propMeshRoad = so.FindProperty(nameof(meshRoad));
+        propBuildingObject = so.FindProperty(nameof(buildingObject));
     }
 
     private void DrawPreview(SceneView sceneView)
@@ -206,6 +215,9 @@ public class CityGenerator : EditorWindow
         EditorGUILayout.PropertyField(propMeshCrossRoad);
         EditorGUILayout.PropertyField(propMeshRoad);
 
+        EditorGUILayout.Space();
+        EditorGUILayout.PropertyField(propBuildingObject);
+
         if (GUILayout.Button("test"))
         {
             MakeBase();
@@ -233,11 +245,14 @@ public class CityGenerator : EditorWindow
         GameObject roads = new("Roads");
         roads.transform.SetParent(parentObject, false);
 
+        GameObject buildings = new("Buildings");
+        buildings.transform.SetParent(parentObject, false);
+
         for (int i = 0; i < horizontalLines; i++)
         {
             for (int j = 0; j < verticalLines; j++)
             {
-                MakePlot(plots, i, j);
+                MakePlot(plots, buildings, i, j);
                 MakeCrossRoad(crossRoads, i, j);
                 MakeRoads(roads, i, j);
             }
@@ -259,8 +274,10 @@ public class CityGenerator : EditorWindow
         if (tf.childCount == 0)
             return;
         
-        for (int i = parentObject.childCount - 1; i >= 0; i--)
+        for (int i = tf.childCount - 1; i >= 0; i--)
         {
+            Debug.Log(i);
+            Debug.Log(parentObject.childCount);
             SetStaticFlagsChildrenRecursive(tf.GetChild(i), flags);
         }
     }
@@ -296,7 +313,7 @@ public class CityGenerator : EditorWindow
         go.transform.position = centerLine;
     }
 
-    private void MakePlot(GameObject plots, int indexWidth, int indexHeight)
+    private void MakePlot(GameObject plots, GameObject buildings, int indexWidth, int indexHeight)
     {
         if (indexWidth >= horizontalLines - 1)
             return;
@@ -323,7 +340,29 @@ public class CityGenerator : EditorWindow
         go.transform.localScale = size;
         go.transform.position = centerLine;
 
+        MakeBuilding(buildings, centerLine);
+
     }
+
+    private void MakeBuilding(GameObject parent, Vector3 center)
+    {
+        GameObject go = Instantiate(buildingObject, parent.transform);
+        go.transform.position = center;
+
+        if (!go.TryGetComponent<BuildingGenerator>(out BuildingGenerator buildingGenerator))
+            return;
+
+
+        float width = UnityEngine.Random.Range(widthPlot - (sizeFromStreet * 2f) - (maxBuildingDeviation ), widthPlot - (sizeFromStreet * 2f) + (maxBuildingDeviation ));
+        float height = UnityEngine.Random.Range(minHeight, maxHeight);
+        float lenght = UnityEngine.Random.Range(heightPlot - (sizeFromStreet * 2f) - (maxBuildingDeviation ), heightPlot - (sizeFromStreet * 2f) + (maxBuildingDeviation ));
+
+
+        buildingGenerator.SetupBuilding(new Vector3(width, height, lenght));
+        buildingGenerator.GenerateBuilding();
+
+    }
+
 
     private void MakeRoads(GameObject parent, int indexWidth, int indexHeight)
     {
