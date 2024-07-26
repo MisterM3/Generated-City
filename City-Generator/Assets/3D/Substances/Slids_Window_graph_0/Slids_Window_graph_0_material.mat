@@ -250,12 +250,12 @@ Material:
     - _FlagsB: 8388608
     - _HeightAmplitude: 0.049999997
     - _HeightCenter: 1
-    - _HeightMapParametrization: 1
-    - _HeightMax: 1
-    - _HeightMin: -1
+    - _HeightMapParametrization: 0
+    - _HeightMax: 5
+    - _HeightMin: -5
     - _HeightOffset: 0
     - _HeightPoMAmplitude: 5
-    - _HeightTessAmplitude: 2
+    - _HeightTessAmplitude: 20
     - _HeightTessCenter: 0.5
     - _InvTilingScale: 1
     - _Ior: 1.5

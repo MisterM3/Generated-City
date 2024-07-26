@@ -35,7 +35,7 @@ public class FixTiling : MonoBehaviour
     private void SetMpbTilingSize()
     {
 
-        Vector4 offsetTiling = new Vector4(0, 0, 1, 1);
+        Vector4 offsetTiling = new Vector4(1, 1, 0, 0);
 
         if (direction == DirectionUV.X || direction == DirectionUV.XY)
         {
@@ -49,7 +49,7 @@ public class FixTiling : MonoBehaviour
 
         Debug.Log(offsetTiling);
 
-        Mpb.SetColor(shPropColor, Color.red);
+      //  Mpb.SetColor(shPropColor, Color.red);
         Mpb.SetVector("_BaseColorMap_ST", offsetTiling);
 
     }
