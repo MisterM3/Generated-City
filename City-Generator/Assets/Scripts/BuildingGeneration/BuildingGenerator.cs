@@ -42,7 +42,7 @@ public class BuildingGenerator : MonoBehaviour
         GameObject buildingMiddle = generateMiddle.GenerateBuildingPart();
 
         buildingMiddle.transform.SetParent(this.transform, false);
-        buildingMiddle.transform.position = new Vector3(buildingBottom.transform.position.x, buildingBottom.transform.position.y + _heightBuilding / 3f, buildingBottom.transform.position.z); 
+        buildingMiddle.transform.position = new Vector3(buildingMiddle.transform.position.x, buildingBottom.transform.position.y + _heightBuilding / 3f, buildingMiddle.transform.position.z); 
 
         //  GameObject building = Instantiate(go, this.transform);
         //  building.transform.localScale = new Vector3(_widthBuilding, _heightBuilding, _lenghtBuilding);

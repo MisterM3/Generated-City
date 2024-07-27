@@ -30,6 +30,9 @@ public class BottomPartBuilding : MonoBehaviour, IGenerateBuildingPart
     private float indentation = 0;
     private float heightOffset = 0;
 
+    [SerializeField] private List<Color> difColors;
+    [SerializeField] private List<Material> difMaterials;
+
 
     public GameObject slipPrefab;
     public GameObject cornerPrefab;
@@ -59,14 +62,14 @@ public class BottomPartBuilding : MonoBehaviour, IGenerateBuildingPart
 
     public GameObject GenerateBuildingPart()
     {
-        GameObject buildingPart = Instantiate(test);
+        GameObject buildingPart = new() { name = "Building" };
 
         indentShape = CenteralizedRandom.RandomizeEnum<IndentShape>();
 
         switch (indentShape)
         {
             case IndentShape.None:
-                buildingPart = MakeNormal(buildingPart);
+                MakeNormal(buildingPart.transform);
                 break;
             case IndentShape.Flat:
                 buildingPart = MakeFlat(buildingPart);
@@ -81,10 +84,33 @@ public class BottomPartBuilding : MonoBehaviour, IGenerateBuildingPart
         return buildingPart;
     }
 
-    public GameObject MakeNormal(GameObject go)
+    public void MakeNormal(Transform parent)
     {
-        go.transform.localScale = new Vector3(width, height, lenght);
-        return go;
+        MakeBuilding(new Vector3(width, height, lenght), parent);
+    }
+
+
+    private void MakeBuilding(Vector3 size, Transform parent)
+    {
+        width = size.x;
+        height = size.y;
+        lenght = size.z;
+
+        GameObject left = Instantiate(test, parent);
+        left.transform.position = new Vector3(-width / 2, 0, 0);
+        left.transform.localScale = new Vector3(height / 2, 1, lenght / 2);
+        GameObject right = Instantiate(test, parent);
+        right.transform.position = new Vector3(width / 2, 0, 0);
+        right.transform.rotation = Quaternion.Euler(0, 180, -90);
+        right.transform.localScale = new Vector3(height / 2, 1, lenght / 2);
+        GameObject forward = Instantiate(test, parent);
+        forward.transform.position = new Vector3(0, 0, -lenght / 2);
+        forward.transform.rotation = Quaternion.Euler(0, -90, -90);
+        forward.transform.localScale = new Vector3(height / 2, 1, width / 2);
+        GameObject back = Instantiate(test, parent);
+        back.transform.position = new Vector3(0, 0, lenght / 2);
+        back.transform.rotation = Quaternion.Euler(0, 90, -90);
+        back.transform.localScale = new Vector3(height / 2, 1, width / 2);
     }
 
 
@@ -116,9 +142,8 @@ public class BottomPartBuilding : MonoBehaviour, IGenerateBuildingPart
         float xPos = -indentValues.leftIndent + indentValues.rightIndent;
         float zPos = -indentValues.forwardIndent + indentValues.backwardsIndent;
 
-
-        go.transform.localScale = new Vector3(objectWidth, height, objectLenght);
-        go.transform.localPosition = new Vector3(xPos, go.transform.localPosition.y, zPos);
+        MakeBuilding(new Vector3(objectWidth, height, objectLenght), go.transform);
+        go.transform.localPosition = new Vector3(xPos / 2, go.transform.localPosition.y, zPos / 2);
 
         return go;
     }
@@ -138,33 +163,38 @@ public class BottomPartBuilding : MonoBehaviour, IGenerateBuildingPart
     {
 
 
+        Vector3 size = Vector3.one;
+        Vector3 position = Vector3.zero;
+
 
         switch (slopeSide)
         {
             case SlopeSide.Left:
-                go.transform.localScale = new Vector3(width - indentation, height - heightOffset, lenght);
-                go.transform.localPosition = new Vector3(-indentation, go.transform.localPosition.y, go.transform.localPosition.z);
+                size = new Vector3(width - indentation, height - heightOffset, lenght);
+                position = new Vector3(-indentation / 2, go.transform.localPosition.y, go.transform.localPosition.z);
                 break;
             case SlopeSide.Right:
-                go.transform.localScale = new Vector3(width - indentation, height - heightOffset, lenght);
-                go.transform.localPosition = new Vector3(indentation, go.transform.localPosition.y, go.transform.localPosition.z);
+                size = new Vector3(width - indentation, height - heightOffset, lenght);
+                position = new Vector3(indentation / 2, go.transform.localPosition.y, go.transform.localPosition.z);
                 break;
             case SlopeSide.Foward:
-                go.transform.localScale = new Vector3(width, height - heightOffset, lenght - indentation);
-                go.transform.localPosition = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y, -indentation);
+                size = new Vector3(width, height - heightOffset, lenght - indentation);
+                position = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y, -indentation / 2);
                 break;
             case SlopeSide.Back:
-                go.transform.localScale = new Vector3(width, height - heightOffset, lenght - indentation);
-                go.transform.localPosition = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y, indentation);
+                size = new Vector3(width, height - heightOffset, lenght - indentation);
+                position = new Vector3(go.transform.localPosition.x, go.transform.localPosition.y, indentation / 2);
                 break;
             case SlopeSide.Horizontal:
-                go.transform.localScale = new Vector3(width - (indentation * 2), height - heightOffset, lenght);
+                size = new Vector3(width - (indentation * 2), height - heightOffset, lenght);
                 break;
             case SlopeSide.Vertical:
-                go.transform.localScale = new Vector3(width, height - heightOffset, lenght - (indentation * 2));
+                size = new Vector3(width, height - heightOffset, lenght - (indentation * 2));
                 break;
         }
 
+        MakeBuilding(size, go.transform);
+        go.transform.position = position;
         return go;
     }
 }

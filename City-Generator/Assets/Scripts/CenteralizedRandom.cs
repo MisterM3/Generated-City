@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public static class CenteralizedRandom
 {
     private static int staticSeed = 0;
@@ -43,6 +43,12 @@ public static class CenteralizedRandom
         var enumType = System.Enum.Parse(typeof(T), test);
         return (T)enumType;
 
+    }
+
+    public static T RandomItem<T>(this IList<T> list)
+    {
+        int index = Range(0, list.Count);
+        return list[index];
     }
 
 }

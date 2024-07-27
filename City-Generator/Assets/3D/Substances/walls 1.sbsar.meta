@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 098cb57db7e685c4c87bfca6e7751ff0
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: c6322bbe415c7db46a18905023620252, type: 2}
+  - {fileID: 11400000, guid: 6e619990edf6fd244943a14106e81a02, type: 2}
+  - {fileID: 11400000, guid: dc0c521cdb7bcc346bca9b9d4735c3d9, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/3D/Substances/walls 1.sbsar

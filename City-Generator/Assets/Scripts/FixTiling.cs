@@ -4,32 +4,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
+[ExecuteAlways, RequireComponent(typeof(MaterialPropertyBlockHolder))]
 public class FixTiling : MonoBehaviour
 {
 
 
     [SerializeField] private DirectionUV direction;
+    [SerializeField] private float multiplier = 1f;
 
-    private MaterialPropertyBlock mpb;
+    static readonly int shPropColor = Shader.PropertyToID("_BaseColorMap_ST");
+    private MaterialPropertyBlockHolder mpbHolder;
 
-    static readonly int shPropColor = Shader.PropertyToID("_BaseColor");
-    static readonly int shMainTex = Shader.PropertyToID("_BaseMap_ST");
-    public MaterialPropertyBlock Mpb
-    {
-        get
-        {
-            if (mpb == null)
-                mpb = new();
-            return mpb;
-        }
-    }
+
 
     public void OnEnable()
     {
-        MeshRenderer rend = GetComponent<MeshRenderer>();
+        if (mpbHolder == null)
+            mpbHolder = GetComponent<MaterialPropertyBlockHolder>();
         SetMpbTilingSize();
-        rend.SetPropertyBlock(Mpb);
     }
 
     private void SetMpbTilingSize()
@@ -39,19 +31,16 @@ public class FixTiling : MonoBehaviour
 
         if (direction == DirectionUV.X || direction == DirectionUV.XY)
         {
-            offsetTiling.x = this.transform.lossyScale.x;
+            offsetTiling.x = Mathf.RoundToInt(this.transform.lossyScale.x * multiplier);
         }
 
         if (direction == DirectionUV.Y || direction == DirectionUV.XY)
         {
-            offsetTiling.y = this.transform.lossyScale.z;
+            offsetTiling.y = Mathf.RoundToInt(this.transform.lossyScale.z * multiplier);
         }
 
-        Debug.Log(offsetTiling);
-
-      //  Mpb.SetColor(shPropColor, Color.red);
-        Mpb.SetVector("_BaseColorMap_ST", offsetTiling);
-
+        mpbHolder.Mpb.SetVector(shPropColor, offsetTiling);
+        mpbHolder.UpdateRenderer();
     }
 
     [System.Serializable]

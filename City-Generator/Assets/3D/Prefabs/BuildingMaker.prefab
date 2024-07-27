@@ -64,8 +64,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164d32a9a8fa986449c97ad3a47249e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 7133253562282364933, guid: e6cf83aded4fb1a42ac26a626d84d329, type: 3}
+  test: {fileID: 5771061405752175492, guid: 9da54ffb9f8088740953252289aff4df, type: 3}
   indentShape: 0
+  indentValues:
+    leftIndent: 0
+    rightIndent: 0
+    forwardIndent: 0
+    backwardsIndent: 0
+  slipPrefab: {fileID: 0}
+  cornerPrefab: {fileID: 0}
   angle: 45
 --- !u!114 &1968952748578614578
 MonoBehaviour:
