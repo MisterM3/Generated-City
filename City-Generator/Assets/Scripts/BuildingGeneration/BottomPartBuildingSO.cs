@@ -56,8 +56,8 @@ public class BottomPartBuilding : MonoBehaviour, IGenerateBuildingPart
             indentValues = new();
         indentValues.RandomizeInit(maxIndentation);
 
-        indentation = CenteralizedRandom.Range(0, maxIndentation);
-        heightOffset = CenteralizedRandom.Range(0, maxHeightOffsetIndentation);
+        indentation = CenteralizedRandom.Range(1, maxIndentation);
+        heightOffset = CenteralizedRandom.Range(1, maxHeightOffsetIndentation);
     }
 
     public GameObject GenerateBuildingPart()
@@ -123,12 +123,18 @@ public class BottomPartBuilding : MonoBehaviour, IGenerateBuildingPart
         [Min(0)] public float forwardIndent = 0;
         [Min(0)] public float backwardsIndent = 0;
 
+        private float startPoint = .25f;
+
         public void RandomizeInit(float maxIndentPerSide)
         {
-            leftIndent = CenteralizedRandom.Range(0, maxIndentPerSide);
-            rightIndent = CenteralizedRandom.Range(0, maxIndentPerSide);
-            forwardIndent = CenteralizedRandom.Range(0, maxIndentPerSide);
-            backwardsIndent = CenteralizedRandom.Range(0, maxIndentPerSide);
+            if (CenteralizedRandom.CoinToss())
+                leftIndent = CenteralizedRandom.Range(startPoint, maxIndentPerSide);
+            if (CenteralizedRandom.CoinToss())
+                rightIndent = CenteralizedRandom.Range(startPoint, maxIndentPerSide);
+            if (CenteralizedRandom.CoinToss())
+                forwardIndent = CenteralizedRandom.Range(startPoint, maxIndentPerSide);
+            if (CenteralizedRandom.CoinToss())
+                backwardsIndent = CenteralizedRandom.Range(startPoint, maxIndentPerSide);
         }
 
     }
@@ -143,7 +149,54 @@ public class BottomPartBuilding : MonoBehaviour, IGenerateBuildingPart
         float zPos = -indentValues.forwardIndent + indentValues.backwardsIndent;
 
         MakeBuilding(new Vector3(objectWidth, height, objectLenght), go.transform);
+        GameObject leftSlide = Instantiate(slipPrefab, go.transform);
+        leftSlide.transform.position = new Vector3((width/2), height, 0);
+        leftSlide.transform.rotation = Quaternion.Euler(0, 180, 0);
+        leftSlide.transform.localScale = new Vector3(indentValues.leftIndent/2, leftSlide.transform.localScale.y, objectLenght/2);
+
+        GameObject rightSlide = Instantiate(slipPrefab, go.transform);
+        rightSlide.transform.position = new Vector3(-(width / 2), height, 0);
+        rightSlide.transform.rotation = Quaternion.Euler(0, 0, 0);
+        rightSlide.transform.localScale = new Vector3(indentValues.rightIndent / 2, rightSlide.transform.localScale.y, objectLenght / 2);
+
+        GameObject forwardSlide = Instantiate(slipPrefab, go.transform);
+        forwardSlide.transform.position = new Vector3(0, height, lenght / 2);
+        forwardSlide.transform.rotation = Quaternion.Euler(0, 90, 0);
+        forwardSlide.transform.localScale = new Vector3(indentValues.forwardIndent / 2, forwardSlide.transform.localScale.y, objectWidth / 2);
+
+        GameObject backSlide = Instantiate(slipPrefab, go.transform);
+        backSlide.transform.position = new Vector3(0, height, -lenght / 2);
+        backSlide.transform.rotation = Quaternion.Euler(0, -90, 0);
+        backSlide.transform.localScale = new Vector3(indentValues.backwardsIndent / 2, forwardSlide.transform.localScale.y, objectWidth / 2);
+
+
+        GameObject leftSlideCorner = Instantiate(cornerPrefab, go.transform);
+        leftSlideCorner.transform.position = new Vector3((width / 2), height, -(lenght/2));
+        leftSlideCorner.transform.rotation = Quaternion.Euler(0, 180, 0);
+        leftSlideCorner.transform.localScale = new Vector3(indentValues.leftIndent / 2, leftSlide.transform.localScale.y, indentValues.backwardsIndent / 2);
+
+        GameObject rightSlideCorner = Instantiate(cornerPrefab, go.transform);
+        rightSlideCorner.transform.position = new Vector3((width / 2), height, (lenght / 2));
+        rightSlideCorner.transform.rotation = Quaternion.Euler(0, 90, 0);
+        rightSlideCorner.transform.localScale = new Vector3(indentValues.forwardIndent / 2, rightSlide.transform.localScale.y, indentValues.leftIndent / 2);
+
+        GameObject forwardSlideCorner = Instantiate(cornerPrefab, go.transform);
+        forwardSlideCorner.transform.position = new Vector3(-(width / 2), height, lenght / 2);
+        forwardSlideCorner.transform.rotation = Quaternion.Euler(0, 0, 0);
+        forwardSlideCorner.transform.localScale = new Vector3(indentValues.rightIndent / 2, forwardSlide.transform.localScale.y, indentValues.forwardIndent / 2);
+
+        GameObject backSlideCorner = Instantiate(cornerPrefab, go.transform);
+        backSlideCorner.transform.position = new Vector3(-(width / 2), height, -lenght / 2);
+        backSlideCorner.transform.rotation = Quaternion.Euler(0, -90, 0);
+        backSlideCorner.transform.localScale = new Vector3(indentValues.backwardsIndent / 2, backSlideCorner.transform.localScale.y, indentValues.rightIndent / 2);
+
+
+
         go.transform.localPosition = new Vector3(xPos / 2, go.transform.localPosition.y, zPos / 2);
+
+
+
+
 
         return go;
     }

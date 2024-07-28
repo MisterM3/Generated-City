@@ -32,11 +32,13 @@ public class FixTiling : MonoBehaviour
         if (direction == DirectionUV.X || direction == DirectionUV.XY)
         {
             offsetTiling.x = Mathf.RoundToInt(this.transform.lossyScale.x * multiplier);
+            offsetTiling.x = Mathf.Max(offsetTiling.x, .25f);
         }
 
         if (direction == DirectionUV.Y || direction == DirectionUV.XY)
         {
             offsetTiling.y = Mathf.RoundToInt(this.transform.lossyScale.z * multiplier);
+            offsetTiling.y = Mathf.Max(offsetTiling.y, .25f);
         }
 
         mpbHolder.Mpb.SetVector(shPropColor, offsetTiling);

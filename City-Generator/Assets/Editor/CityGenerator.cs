@@ -72,7 +72,7 @@ public class CityGenerator : EditorWindow
         SetupSerializedObject();
         SceneView.duringSceneGui += DrawPreview;
 
-        UnityEngine.Random.InitState(seed);
+        CenteralizedRandom.Init(seed);
     }
 
     private void OnDisable()
@@ -353,9 +353,9 @@ public class CityGenerator : EditorWindow
             return;
 
 
-        float width = UnityEngine.Random.Range(widthPlot - (sizeFromStreet * 2f) - (maxBuildingDeviation ), widthPlot - (sizeFromStreet * 2f) + (maxBuildingDeviation ));
-        float height = UnityEngine.Random.Range(minHeight, maxHeight);
-        float lenght = UnityEngine.Random.Range(heightPlot - (sizeFromStreet * 2f) - (maxBuildingDeviation ), heightPlot - (sizeFromStreet * 2f) + (maxBuildingDeviation ));
+        float width = CenteralizedRandom.Range(widthPlot - (sizeFromStreet * 2f) - (maxBuildingDeviation ), widthPlot - (sizeFromStreet * 2f) + (maxBuildingDeviation ));
+        float height = CenteralizedRandom.Range(minHeight, maxHeight);
+        float lenght = CenteralizedRandom.Range(heightPlot - (sizeFromStreet * 2f) - (maxBuildingDeviation ), heightPlot - (sizeFromStreet * 2f) + (maxBuildingDeviation ));
 
 
         buildingGenerator.SetupBuilding(new Vector3(width, height, lenght));

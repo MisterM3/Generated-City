@@ -25,6 +25,7 @@ public class BuildingGenerator : MonoBehaviour
     {
         this.transform.RemoveAllChildren();
 
+
         if (generateBottom == null)
             return;
 
