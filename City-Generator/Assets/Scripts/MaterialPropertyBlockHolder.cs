@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
 public class MaterialPropertyBlockHolder : MonoBehaviour
 {
     private MaterialPropertyBlock mpb;
@@ -16,10 +13,6 @@ public class MaterialPropertyBlockHolder : MonoBehaviour
         }
     }
 
-    public void OnEnable()
-    {
-        UpdateRenderer();
-    }
 
     public void UpdateRenderer()
     {

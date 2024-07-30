@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways, RequireComponent(typeof(MaterialPropertyBlockHolder))]
+//[ExecuteAlways, RequireComponent(typeof(MaterialPropertyBlockHolder))]
 public class SetColorMaterial : MonoBehaviour
 {
     [SerializeField] private List<Color> colors;

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8628453867555789418}
   - component: {fileID: 5090950539318387627}
   - component: {fileID: 1968952748578614578}
+  - component: {fileID: 1292797201132473286}
   m_Layer: 0
   m_Name: BuildingMaker
   m_TagString: Untagged
@@ -64,20 +65,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164d32a9a8fa986449c97ad3a47249e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 5771061405752175492, guid: 9da54ffb9f8088740953252289aff4df, type: 3}
   indentShape: 0
-  indentValues:
-    leftIndent: 0
-    rightIndent: 0
-    forwardIndent: 0
-    backwardsIndent: 0
-  difColors: []
-  difMaterials: []
-  slipPrefab: {fileID: 919132149155446097, guid: b232306d9680bb341a339fa3e33833d4,
-    type: 3}
-  cornerPrefab: {fileID: 919132149155446097, guid: c5ab003db17fa354196789ec4d14e608,
-    type: 3}
-  angle: 45
+  partBottomCollection:
+  - shape: 0
+    strategy: {fileID: 11400000, guid: 7f6c2977c7c20f443a46040df3a58f80, type: 2}
+  - shape: 1
+    strategy: {fileID: 11400000, guid: 58f35741df353d34c997e59d6ed9271e, type: 2}
+  - shape: 2
+    strategy: {fileID: 11400000, guid: e024fc73dcdfa484789b86e2c9e98cba, type: 2}
 --- !u!114 &1968952748578614578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,3 +86,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: {fileID: 5771061405752175492, guid: 9da54ffb9f8088740953252289aff4df, type: 3}
+--- !u!114 &1292797201132473286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5017410287966595588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65980fee06632144a1d6b2177bbc7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 3
+  multiplier: 1
