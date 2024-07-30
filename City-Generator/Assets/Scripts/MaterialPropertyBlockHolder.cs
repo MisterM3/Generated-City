@@ -16,8 +16,10 @@ public class MaterialPropertyBlockHolder : MonoBehaviour
 
     public void UpdateRenderer()
     {
-        MeshRenderer rend = GetComponent<MeshRenderer>();
-        rend.SetPropertyBlock(Mpb);
+        MeshRenderer rend = null;
+
+        if (TryGetComponent<MeshRenderer>(out rend))
+            rend.SetPropertyBlock(Mpb);
     }
 
 }

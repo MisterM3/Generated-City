@@ -276,8 +276,8 @@ public class CityGenerator : EditorWindow
         
         for (int i = tf.childCount - 1; i >= 0; i--)
         {
-            Debug.Log(i);
-            Debug.Log(parentObject.childCount);
+         //   Debug.Log(i);
+         //   Debug.Log(parentObject.childCount);
             SetStaticFlagsChildrenRecursive(tf.GetChild(i), flags);
         }
     }

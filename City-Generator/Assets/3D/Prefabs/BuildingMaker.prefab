@@ -53,6 +53,7 @@ MonoBehaviour:
   go: {fileID: 919132149155446097, guid: 925d8786f1021774cad80df7d5e713e0, type: 3}
   generateBottom: {fileID: 5090950539318387627}
   generateMiddle: {fileID: 1968952748578614578}
+  fixTiling: {fileID: 1292797201132473286}
 --- !u!114 &5090950539318387627
 MonoBehaviour:
   m_ObjectHideFlags: 0

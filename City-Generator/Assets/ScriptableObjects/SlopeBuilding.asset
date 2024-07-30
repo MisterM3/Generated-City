@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sidePrefab: {fileID: 5771061405752175492, guid: 9da54ffb9f8088740953252289aff4df,
     type: 3}
-  indentation: 0
+  slopeSidePrefab: {fileID: 919132149155446097, guid: 0025caf65d52012479f50ab7df7cdcf5,
+    type: 3}
+  minIndentation: 0.5
   maxIndentation: 2.5
-  heightOffset: 0
+  minHeightOffset: 0.5
   maxHeightOffset: 2.5

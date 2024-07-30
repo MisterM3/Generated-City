@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 140
+  controlID: 7196
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -33,23 +33,22 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125e6de241a99ca4cade0099b4bb57bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Console
-    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000,
-      type: 0}
+    m_Text: City Generator
+    m_Image: {fileID: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 352
-    y: 633
-    width: 737
-    height: 366
+    x: 1091
+    y: 73
+    width: 828
+    height: 926
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -60,6 +59,26 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
     m_OverlaysVisible: 1
+  horizontalLines: 10
+  verticalLines: 12
+  sizeRoad: 5
+  widthPlot: 30
+  heightPlot: 25
+  parentObject: {fileID: 0}
+  minHeight: 30
+  maxHeight: 60
+  sizeFromStreet: 4
+  maxBuildingDeviation: 4
+  seed: 50
+  randomSeed: 0
+  meshPlane: {fileID: 3833242685107138247, guid: 269447b5e3bce4c40ae36fbeb043ffda,
+    type: 3}
+  meshCrossRoad: {fileID: 919132149155446097, guid: e0cad2583de107643b40c6b05a5c0ea2,
+    type: 3}
+  meshRoad: {fileID: 2721039597977674299, guid: e23be0986155fda45ae7514359302c3c,
+    type: 3}
+  buildingObject: {fileID: 5017410287966595588, guid: 59bd2d22121a9464daf0d53094c6a34f,
+    type: 3}
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -74,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 4}
-  - {fileID: 15}
+  - {fileID: 16}
   m_Position:
     serializedVersion: 2
     x: 0
@@ -84,7 +103,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 141
+  controlID: 7197
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -110,7 +129,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 142
+  controlID: 7159
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -136,7 +155,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 143
+  controlID: 7090
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -560,9 +579,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 122.6756, y: 7.847488, z: 3.5489314}
+    m_Target: {x: 96.11484, y: 13.8772, z: -76.85164}
     speed: 2
-    m_Value: {x: 122.6756, y: 7.847488, z: 3.5489314}
+    m_Value: {x: 96.11484, y: 13.8772, z: -76.85164}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -608,13 +627,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.009188365, y: 0.98858595, z: -0.05777325, w: 0.1420036}
+    m_Target: {x: -0.035461724, y: -0.9583936, z: 0.12990902, w: -0.2537171}
     speed: 2
-    m_Value: {x: 0.009184282, y: 0.98814666, z: -0.05774758, w: 0.1419405}
+    m_Value: {x: -0.035443574, y: -0.957903, z: 0.12984253, w: -0.25358722}
   m_Size:
-    m_Target: 0.8660254
+    m_Target: 1.1355798
     speed: 2
-    m_Value: 0.8660254
+    m_Value: 1.1355798
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -788,7 +807,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 205
+  controlID: 7160
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -809,8 +828,8 @@ MonoBehaviour:
     y: 0
     width: 352
     height: 387
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -853,24 +872,24 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 443}
-      m_SelectedIDs: a6a70100
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 9436fbff9e36fbff2641fbff3041fbff3c66fbffc0fafbffcafafbff9828fcff1c69fcff2669fcff528efcff14c9fcff1ec9fcffd0edfcff1827fdff2227fdffb44afdff6a76fdff1877fdff2c8bfdff368bfdff38affdff9e51feffa851feff645dfeff6e5dfeffc666feffd066fefffc72feff30d5feff74d5feff7ed5feff28e9feff623fffff5c5cffff0a5dffff9c77ffff0a78ffff2e89ffff46f4ffff42a30000
+      m_ExpandedIDs: 3c49edff4849edffec56edff8865edff9465edff18a0edff7a1eeeff861eeeffaa49eeffe86beefff46beeff1897eeffeec1eefffac1eeff0ae5eeff0aa3efff16a3efffbea3efffcaa3efffd2aaefff46abefff52abefff7aadefff86adefff6abcefff9aeeefffa6eeefff4607f0ffa0caf0ff20cbf0ff88d2f0ff94d2f0ff14faf0ffb853f2ffc453f2ff807bf2ff50f2f2ff5cf2f2ff181af3ff9cc0f4ffa8c0f4ff88e7f4ff0609f5ff1209f5ff5239f5ff16aff6ff22aff6ff4ab8f6ffae80f7ffba80f7ffba98f7ff2c98f8ff3898f8ffd0b1f8ff2446f9ff3046f9ff8a48f9ff4082f9ff4c82f9ffe49bf9ff2e0cfaff3a0cfaffae2efaff1e45faff2a45faffd05cfaffdc5cfaff707ffaff9436fbff9e36fbff2641fbff3041fbff3c66fbffc0fafbffcafafbff9828fcff1c69fcff2669fcff528efcff14c9fcff1ec9fcffd0edfcff1827fdff2227fdffb44afdff6a76fdff1877fdff2c8bfdff368bfdff38affdff9e51feffa851feff645dfeff6e5dfeffc666feffd066fefffc72feff30d5feff74d5feff7ed5feff28e9feff623fffff5c5cffff0a5dffff9c77ffff0a78ffff2e89ffff46f4ffff42a30000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: SideBuilding(Clone)
-        m_OriginalName: SideBuilding(Clone)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -210768
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 11}
       m_SearchString: 
@@ -901,10 +920,10 @@ MonoBehaviour:
     height: 387
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 2}
+  m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 14}
-  - {fileID: 2}
+  - {fileID: 15}
   m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &14
@@ -953,7 +972,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/ScriptableObjects
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -961,16 +980,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/ScriptableObjects
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Game Development\Unity\Projects\School\Still Working on\Generated-City\City-Generator
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 58}
-    m_SelectedIDs: fe740000
-    m_LastClickedID: 29950
-    m_ExpandedIDs: 00000000f2740000f4740000f8740000fe740000
+    scrollPos: {x: 0, y: 60}
+    m_SelectedIDs: fccc0000
+    m_LastClickedID: 52476
+    m_ExpandedIDs: 00000000f2740000f4740000f8740000fe7400002ccc0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1023,10 +1042,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a6a70100
-    m_LastClickedInstanceID: 108454
+    m_SelectedInstanceIDs: 1c49edff
+    m_LastClickedInstanceID: -1226468
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000727a0000068c000000000000
+    m_ExpandedInstanceIDs: c6230000727a0000068c00000000000082760000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1062,49 +1081,23 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 1091
-    y: 0
-    width: 829
-    height: 947
-  m_MinSize: {x: 276, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 17}
-  m_Panes:
-  - {fileID: 16}
-  - {fileID: 17}
-  m_Selected: 1
-  m_LastSelected: 0
---- !u!114 &16
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 125e6de241a99ca4cade0099b4bb57bc, type: 3}
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: City Generator
-    m_Image: {fileID: 0}
+    m_Text: Console
+    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000,
+      type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1091
-    y: 73
-    width: 828
-    height: 926
+    x: 352
+    y: 633
+    width: 737
+    height: 366
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1115,26 +1108,33 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
     m_OverlaysVisible: 1
-  horizontalLines: 10
-  verticalLines: 12
-  sizeRoad: 5
-  widthPlot: 30
-  heightPlot: 25
-  parentObject: {fileID: 0}
-  minHeight: 30
-  maxHeight: 60
-  sizeFromStreet: 4
-  maxBuildingDeviation: 4
-  seed: 50
-  randomSeed: 0
-  meshPlane: {fileID: 3833242685107138247, guid: 269447b5e3bce4c40ae36fbeb043ffda,
-    type: 3}
-  meshCrossRoad: {fileID: 919132149155446097, guid: e0cad2583de107643b40c6b05a5c0ea2,
-    type: 3}
-  meshRoad: {fileID: 2721039597977674299, guid: e23be0986155fda45ae7514359302c3c,
-    type: 3}
-  buildingObject: {fileID: 5017410287966595588, guid: 59bd2d22121a9464daf0d53094c6a34f,
-    type: 3}
+--- !u!114 &16
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: CityGenerator
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 1091
+    y: 0
+    width: 829
+    height: 947
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 2}
+  m_Panes:
+  - {fileID: 2}
+  - {fileID: 17}
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52

@@ -6,6 +6,9 @@ using UnityEngine;
 public class SlopeBuilding : PartStrategy
 {
 
+
+    [SerializeField] GameObject slopeSidePrefab;
+
     private float indentation = 0;
     [SerializeField] private float minIndentation = .5f;
     [SerializeField] private float maxIndentation = 2.5f;
@@ -142,8 +145,104 @@ public class SlopeBuilding : PartStrategy
             backSlope.transform.localScale = sideVertical;
         }
 
+        MakeTriangles(side, size, parent);
+
+    }
+
+    private void MakeTriangles(SlopeSide side, Vector3 size, Transform parent)
+    {
+
+        float width = size.x;
+        float height = size.y;
+        float lenght = size.z;
 
 
+        
+
+        Vector3 scale = new Vector3(indentation/2, heightOffset/2, 1);
+
+        if (side == SlopeSide.Left || side == SlopeSide.Horizontal)
+        {
+            GameObject triangleLeft = Instantiate(slopeSidePrefab, parent);
+            GameObject triangleRight = Instantiate(slopeSidePrefab, parent);
+            triangleLeft.transform.localScale = scale;
+            triangleRight.transform.localScale = scale;
+
+            float xPos = 0;
+
+            if (side == SlopeSide.Horizontal)
+                xPos = ((width) / 2 - indentation);
+            else
+                xPos = ((width - indentation) / 2);
+
+            triangleLeft.transform.position = new Vector3(xPos, height - heightOffset, lenght / 2);
+            triangleRight.transform.position = new Vector3(xPos, height - heightOffset, -lenght / 2);
+
+            triangleLeft.transform.rotation = Quaternion.Euler(-180, 180, 0);
+            triangleRight.transform.rotation = Quaternion.Euler(-180, 180, 0);
+
+        }
+
+        if (side == SlopeSide.Right || side == SlopeSide.Horizontal)
+        {
+            GameObject triangleLeft = Instantiate(slopeSidePrefab, parent);
+            GameObject triangleRight = Instantiate(slopeSidePrefab, parent);
+            triangleLeft.transform.localScale = scale;
+            triangleRight.transform.localScale = scale;
+
+            float xPos = 0;
+
+            if (side == SlopeSide.Horizontal)
+                xPos = -((width) / 2 - indentation);
+            else
+                xPos = -((width - indentation) / 2);
+
+            triangleLeft.transform.position = new Vector3(xPos, height - heightOffset, -lenght / 2);
+            triangleRight.transform.position = new Vector3(xPos, height - heightOffset, lenght / 2);
+
+            triangleLeft.transform.rotation = Quaternion.Euler(-180, 0, 0);
+            triangleRight.transform.rotation = Quaternion.Euler(-180, 0, 0);
+        }
+        if (side == SlopeSide.Foward)
+        {
+            GameObject triangleLeft = Instantiate(slopeSidePrefab, parent);
+            GameObject triangleRight = Instantiate(slopeSidePrefab, parent);
+            triangleLeft.transform.localScale = scale;
+            triangleRight.transform.localScale = scale;
+
+            float zPos = 0;
+
+            if (side == SlopeSide.Vertical || side == SlopeSide.Vertical)
+                zPos = ((lenght) / 2 - indentation);
+            else
+                zPos = ((lenght - indentation) / 2);
+
+            triangleLeft.transform.position = new Vector3(-width / 2, height - heightOffset, zPos);
+            triangleRight.transform.position = new Vector3(width / 2, height - heightOffset, zPos);
+
+            triangleLeft.transform.rotation = Quaternion.Euler(-180, 90, 0);
+            triangleRight.transform.rotation = Quaternion.Euler(-180, 90, 0);
+        }
+        if (side == SlopeSide.Back || side == SlopeSide.Vertical)
+        {
+            GameObject triangleLeft = Instantiate(slopeSidePrefab, parent);
+            GameObject triangleRight = Instantiate(slopeSidePrefab, parent);
+            triangleLeft.transform.localScale = scale;
+            triangleRight.transform.localScale = scale;
+
+            float zPos = 0;
+
+            if (side == SlopeSide.Vertical)
+                zPos = -((lenght) / 2 - indentation);
+            else
+                zPos = -((lenght - indentation) / 2);
+
+            triangleLeft.transform.position = new Vector3(width / 2, height - heightOffset, zPos);
+            triangleRight.transform.position = new Vector3(-width / 2, height - heightOffset, zPos);
+
+            triangleLeft.transform.rotation = Quaternion.Euler(-180, -90, 0);
+            triangleRight.transform.rotation = Quaternion.Euler(-180, -90, 0);
+        }
     }
 
     private void MakeOtherSides(SlopeSide side, Vector3 size, Transform parent)
