@@ -149,7 +149,9 @@ MonoBehaviour:
   CurrentStatePreset: " <sbspreset pkgurl=\"pkg://walls\" label=\"\" >\n  <presetinput
     identifier=\"$outputsize\" uid=\"3969147591\" type=\"8\" value=\"10,10\" />\n 
     <presetinput identifier=\"outputcolor\" uid=\"2349259265\" type=\"3\" value=\"0.0941176,0.0941176,0.0941176,1\"
-    />\n </sbspreset>\n"
+    />\n  <presetinput identifier=\"outputcolor_1\" uid=\"2349254943\" type=\"0\"
+    value=\"0.24\" />\n  <presetinput identifier=\"outputcolor_2\" uid=\"2349254959\"
+    type=\"0\" value=\"0.27\" />\n </sbspreset>\n"
   IsRuntimeOnly: 0
   GenerateAllOutputs: 0
   GenerateAllMipmaps: 1
@@ -281,7 +283,7 @@ MonoBehaviour:
             output image
           Type: 0
           WidgetType: 3
-        Data: 0.235294
+        Data: 0.24
         NumericalDescription:
           DefaultValue: 0.235294
           MinValue: 0
@@ -302,7 +304,7 @@ MonoBehaviour:
             output image
           Type: 0
           WidgetType: 3
-        Data: 0.266667
+        Data: 0.27
         NumericalDescription:
           DefaultValue: 0.266667
           MinValue: 0
