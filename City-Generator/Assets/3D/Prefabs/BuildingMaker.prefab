@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8628453867555789418}
   - component: {fileID: 5090950539318387627}
   - component: {fileID: 1968952748578614578}
+  - component: {fileID: 2254390833289122601}
   - component: {fileID: 1292797201132473286}
   m_Layer: 0
   m_Name: BuildingMaker
@@ -53,6 +54,7 @@ MonoBehaviour:
   go: {fileID: 919132149155446097, guid: 925d8786f1021774cad80df7d5e713e0, type: 3}
   generateBottom: {fileID: 5090950539318387627}
   generateMiddle: {fileID: 1968952748578614578}
+  generateTop: {fileID: 2254390833289122601}
   fixTiling: {fileID: 1292797201132473286}
   color: 0
   buildingMaterials:
@@ -110,6 +112,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: {fileID: 5771061405752175492, guid: 9da54ffb9f8088740953252289aff4df, type: 3}
+--- !u!114 &2254390833289122601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5017410287966595588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264b8d92755c073498167ef940c2deb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topPrefab: {fileID: 919132149155446097, guid: 755a8336c42683d45955ca17f3d78ca5,
+    type: 3}
 --- !u!114 &1292797201132473286
 MonoBehaviour:
   m_ObjectHideFlags: 0
