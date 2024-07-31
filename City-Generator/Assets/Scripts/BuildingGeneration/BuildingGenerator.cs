@@ -38,6 +38,8 @@ public class BuildingGenerator : MonoBehaviour
         public List<Material> bottomMaterial;
 
         public List<Material> middleMaterial;
+
+        public Material topMaterial;
     }
 
 
@@ -135,6 +137,10 @@ public class BuildingGenerator : MonoBehaviour
         buildingTop.transform.SetParent(this.transform, false);
         buildingTop.transform.position = new Vector3(buildingTop.transform.position.x,_heightBuilding, buildingTop.transform.position.z);
 
+        if (buildingTop.TryGetComponent<Renderer>(out Renderer rend))
+        {
+            rend.sharedMaterial = currentMaterials.topMaterial;
+        }
 
         fixTiling.FixTilingChilds();
 

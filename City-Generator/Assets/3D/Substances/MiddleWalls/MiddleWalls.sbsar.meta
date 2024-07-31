@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e7619d18b4a5f71418e04f6e354ba6ef
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: b2218bb8bbf301246b81e9e25c561795, type: 2}
+  - {fileID: 11400000, guid: b56a36beb8e2268408a3f0cd8bc533a4, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/3D/Substances/MiddleWalls/MiddleWalls.sbsar
