@@ -18,7 +18,6 @@ public class MaterialPropertyBlockHolder : MonoBehaviour
     private void OnEnable()
     {
         UpdateRenderer();
-        Debug.Log("te");
     }
 
     public void UpdateRenderer()

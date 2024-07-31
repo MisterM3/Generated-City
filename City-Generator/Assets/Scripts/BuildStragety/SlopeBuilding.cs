@@ -203,7 +203,7 @@ public class SlopeBuilding : PartStrategy
             triangleLeft.transform.rotation = Quaternion.Euler(-180, 0, 0);
             triangleRight.transform.rotation = Quaternion.Euler(-180, 0, 0);
         }
-        if (side == SlopeSide.Foward)
+        if (side == SlopeSide.Foward || side == SlopeSide.Vertical)
         {
             GameObject triangleLeft = Instantiate(slopeSidePrefab, parent);
             GameObject triangleRight = Instantiate(slopeSidePrefab, parent);
