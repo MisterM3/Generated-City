@@ -19,7 +19,7 @@ public class SetColorMaterial : MonoBehaviour
 
     private void SetColor()
     {
-        mpbHolder.Mpb.SetVector(shPropColor, colors.RandomItem());
+        mpbHolder.SerilalizedMbp.SetVector(shPropColor, colors.RandomItem());
         mpbHolder.UpdateRenderer();
     }
 

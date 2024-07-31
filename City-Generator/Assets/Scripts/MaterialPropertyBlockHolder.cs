@@ -1,9 +1,10 @@
 using UnityEngine;
 
+[ExecuteAlways]
 public class MaterialPropertyBlockHolder : MonoBehaviour
 {
-    private MaterialPropertyBlock mpb;
-    public MaterialPropertyBlock Mpb
+    [SerializeField] private SeriliazedPropertyBlocks mpb;
+    public SeriliazedPropertyBlocks SerilalizedMbp
     {
         get
         {
@@ -14,12 +15,18 @@ public class MaterialPropertyBlockHolder : MonoBehaviour
     }
 
 
+    private void OnEnable()
+    {
+        UpdateRenderer();
+        Debug.Log("te");
+    }
+
     public void UpdateRenderer()
     {
         MeshRenderer rend = null;
 
         if (TryGetComponent<MeshRenderer>(out rend))
-            rend.SetPropertyBlock(Mpb);
+            rend.SetPropertyBlock(SerilalizedMbp.Mbp);
     }
 
 }

@@ -41,7 +41,7 @@ public class FixTiling : MonoBehaviour
             offsetTiling.y = Mathf.Max(offsetTiling.y, .25f);
         }
 
-        mpbHolder.Mpb.SetVector(shPropColor, offsetTiling);
+        mpbHolder.SerilalizedMbp.SetVector(shPropColor, offsetTiling);
         mpbHolder.UpdateRenderer();
     }
 
