@@ -301,7 +301,7 @@ public class CityGenerator : EditorWindow
         float incrementHeight = sizeRoad + heightPlot;
 
         Vector3 center = parentObject.position;
-        Vector3 size = new Vector3(sizeRoad / 2f, 1, sizeRoad / 2f);
+        Vector3 size = new Vector3(sizeRoad / 2f, sizeRoad / 2f, 1);
 
         float xCoord = center.x + (sizeRoad/2f) - halfWidth + incrementWidth * indexHeight;
         float zCoord = center.z + (sizeRoad / 2f) - halfHeight + incrementHeight * indexWidth;

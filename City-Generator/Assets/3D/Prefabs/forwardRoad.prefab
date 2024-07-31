@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1858912220327378216}
   - component: {fileID: 5544567677961218022}
   - component: {fileID: 6420915605930708431}
+  - component: {fileID: 7219787893626639142}
   m_Layer: 0
   m_Name: forwardRoad
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e646e3ce9a5abb43bc1a0e56737e233, type: 2}
+  - {fileID: 2100000, guid: b44de48ccdc00cd4fb0f496fd0249b53, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,3 +98,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
+  multiplier: 1
+--- !u!114 &7219787893626639142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721039597977674299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500d20d66a86603408f2ca274c2d38c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mpb:
+    values:
+      color: []
+      vectors:
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+    colorKeys: 
+    colorValues: []
+    vectorKeys: 74010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000
+    vectorValues:
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}

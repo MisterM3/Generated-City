@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f47af28a962f92949b2482cdafc8930b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: 5677bb8fb4102cf4998b59acc884a45e, type: 2}
+  - {fileID: 11400000, guid: 466988a78ff35744082c2afaeda68001, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/3D/Substances/Roads/Road.sbsar

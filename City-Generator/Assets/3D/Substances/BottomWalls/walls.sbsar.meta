@@ -1,5 +1,10 @@
 fileFormatVersion: 2
 guid: c794c1dbfc7038d4186a8e254424c23f
+importerOverride:
+  nativeImporterType: 1003
+  scriptedImporterType:
+    serializedVersion: 2
+    Hash: 0ea61a61f5655bc3d9d14dfa550c80a4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -12,5 +17,11 @@ ScriptedImporter:
   - {fileID: 11400000, guid: 6ccbd792a2f00654c81cbda122f0ed81, type: 2}
   - {fileID: 11400000, guid: 47c339af014fafa4e81a456d81001e5c, type: 2}
   - {fileID: 11400000, guid: 0e25385fe28093146aa2260fe87fd659, type: 2}
+  - {fileID: 11400000, guid: 35d904a7caa243d4396b2edf3045ee11, type: 2}
+  - {fileID: 11400000, guid: 11e4a0811c1d09349a9a040b7fd914ca, type: 2}
+  - {fileID: 11400000, guid: 3375a47441d873844af77f82e7fcb77b, type: 2}
+  - {fileID: 11400000, guid: ae079f77bf143fc4f82f1d05e7a7fd08, type: 2}
+  - {fileID: 11400000, guid: 5a3c230e43453be45b38a1ee797fdcc0, type: 2}
+  - {fileID: 11400000, guid: a6b018dcf3be07245bb7c5a7b6778ae7, type: 2}
   _fileAsset: {instanceID: 0}
   _assetPath: Assets/3D/Substances/BottomWalls/walls.sbsar
