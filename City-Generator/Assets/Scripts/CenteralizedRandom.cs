@@ -37,7 +37,7 @@ public static class CenteralizedRandom
 
         var enumValues = System.Enum.GetValues(typeof(T));
 
-        int resultIntEnum = Random.Range(0, enumValues.Length);
+        int resultIntEnum = Range(0, enumValues.Length);
 
         var test = System.Enum.GetName(typeof(T), resultIntEnum);
         var enumType = System.Enum.Parse(typeof(T), test);
