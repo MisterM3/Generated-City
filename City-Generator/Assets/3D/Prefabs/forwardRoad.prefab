@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b44de48ccdc00cd4fb0f496fd0249b53, type: 2}
+  - {fileID: 2100000, guid: 2cfe74cd610d5534a89f17ce8ae1cb8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,10 +159,43 @@ MonoBehaviour:
         value: {x: 1, y: 1, z: 0, w: 0}
       - nameID: 372
         value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
+      - nameID: 372
+        value: {x: 1, y: 1, z: 0, w: 0}
     colorKeys: 
     colorValues: []
-    vectorKeys: 74010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000
+    vectorKeys: 740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000740100007401000074010000
     vectorValues:
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
+    - {x: 1, y: 1, z: 0, w: 0}
     - {x: 1, y: 1, z: 0, w: 0}
     - {x: 1, y: 1, z: 0, w: 0}
     - {x: 1, y: 1, z: 0, w: 0}
