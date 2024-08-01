@@ -185,7 +185,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1ef9714618259e2498a59679144d1b40, type: 2}
+      objectReference: {fileID: 2100000, guid: b374e3cf117e7b04e83ce210a96d2cb1, type: 2}
     - target: {fileID: 919132149155446097, guid: 755a8336c42683d45955ca17f3d78ca5,
         type: 3}
       propertyPath: m_Name
@@ -199,6 +199,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 168965305933055792}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 755a8336c42683d45955ca17f3d78ca5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2356917553415016714}
   m_SourcePrefab: {fileID: 100100000, guid: 755a8336c42683d45955ca17f3d78ca5, type: 3}
 --- !u!4 &2718621536101882073 stripped
 Transform:
@@ -219,13 +223,34 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3382673148785984099}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69c25c463229525438169c4d5e000d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedMaterial: {fileID: 2100000, guid: 1ef9714618259e2498a59679144d1b40, type: 2}
-  mat:
-  - {fileID: 2100000, guid: 1ef9714618259e2498a59679144d1b40, type: 2}
-  - {fileID: 2100000, guid: ad72021828c0ec84baceb33676d37449, type: 2}
-  - {fileID: 2100000, guid: f40af25c7347bb84d8c50aef4501ede3, type: 2}
+  selectedColor: {r: 0, g: 0, b: 0, a: 1}
+  colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.780392, g: 0.545098, b: 0, a: 1}
+  - {r: 0.24964403, g: 0.251869, b: 0.2830189, a: 1}
+  holder: {fileID: 2356917553415016714}
+--- !u!114 &2356917553415016714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3382673148785984099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500d20d66a86603408f2ca274c2d38c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mpb:
+    values:
+      color: []
+      vectors: []
+    colorKeys: 
+    colorValues: []
+    vectorKeys: 
+    vectorValues: []
