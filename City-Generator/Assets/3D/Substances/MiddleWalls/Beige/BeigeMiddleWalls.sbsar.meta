@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: e061ab8c2e556da4db52a6efa66f63f2
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: affcbf8cbc2ff0343a5b1d09b0aff010, type: 2}
+  - {fileID: 11400000, guid: c324a5c76a94b02459896acce9cf0585, type: 2}
+  - {fileID: 11400000, guid: 35fe0eb5abe13a847bcb4bef79a6a1cd, type: 2}
+  - {fileID: 11400000, guid: e95cd1213cf6fb949a76476a2f378342, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/3D/Substances/MiddleWalls/Beige/BeigeMiddleWalls.sbsar

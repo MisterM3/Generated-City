@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c2a9e335b9061cf43bc1c0262133f4f7
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: cd0e62a4ecd079943b7e013484e0774a, type: 2}
+  - {fileID: 11400000, guid: bc5bac531992ea344ad8d1d878eba2d7, type: 2}
+  - {fileID: 11400000, guid: 51c08b3a23a3ed04dba3ea8ccf1ec014, type: 2}
+  - {fileID: 11400000, guid: a6f3d104057e8cd45804e35a931e534f, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/3D/Substances/MiddleWalls/DarkGray/DarkGrayMiddleWalls.sbsar

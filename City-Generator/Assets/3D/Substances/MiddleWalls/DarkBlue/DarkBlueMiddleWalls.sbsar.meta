@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 16c32ffb9925e144ebed90075b242f6b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: c130e3f8b4e34df4a8e19bc39f952c52, type: 2}
+  - {fileID: 11400000, guid: 6de96e9fecbcd404a929f6ba75c8739e, type: 2}
+  - {fileID: 11400000, guid: 3eebc10028c1a1d4a9322de808913728, type: 2}
+  - {fileID: 11400000, guid: 89ac99a72ab68e9449196b33c8fc6319, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/3D/Substances/MiddleWalls/DarkBlue/DarkBlueMiddleWalls.sbsar
