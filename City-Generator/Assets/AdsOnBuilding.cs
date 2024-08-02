@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
 public class AdsOnBuilding : MonoBehaviour
 {
 
@@ -11,6 +10,8 @@ public class AdsOnBuilding : MonoBehaviour
     [SerializeField] private List<Vector2> possibleHeights = new();
 
     [SerializeField] private List<Ads> ads = new();
+
+    public bool init = false;
 
 
     private float minSizeAds = 0;
@@ -25,29 +26,30 @@ public class AdsOnBuilding : MonoBehaviour
 
     public void OnEnable()
     {
-        if (UnityEditor.PrefabUtility.IsPartOfAnyPrefab(this.gameObject))
+        if (init)
             return;
 
         if (this.transform.childCount == 0)
         {
             Place();
+            init = true;
         }
     }
 
     public void Place()
     {
 
-        float deviation = 0;
-
-        foreach(Ads ad in ads)
+        for(int i = ads.Count - 1; i != 0; i--)
         {
-            minSizeAds = Mathf.Max(ad.size.y / 2, minSizeAds);
+            Ads ad = ads[i];
+            minSizeAds = Mathf.Max(ad.size.y, minSizeAds);
         }
 
 
-        if ((this.transform.localScale.y + minSizeAds) - (minHeight - minSizeAds) >= minSizeAds)
+        if ((this.transform.localScale.x + minSizeAds) - (minHeight - minSizeAds) >= minSizeAds)
         {
-            possibleHeights.Add(new Vector2(minHeight + deviation, this.transform.localScale.x + deviation));
+            possibleHeights.Clear();
+            possibleHeights.Add(new Vector2(minHeight + minSizeAds, this.transform.localScale.x + minSizeAds));
             PlaceAds();
         }
 
@@ -69,18 +71,19 @@ public class AdsOnBuilding : MonoBehaviour
 
             float heightAd = CenteralizedRandom.Range(heightGrab.x, heightGrab.y);
 
-            if ((heightAd - minSizeAds/2) - heightGrab.x >= minSizeAds)
+            if ((heightAd - minSizeAds * 2) - heightGrab.x >= minSizeAds)
             {
-                Vector2 newLow = new Vector2(heightGrab.x, (heightAd - minSizeAds / 2));
+                Vector2 newLow = new Vector2(heightGrab.x, (heightAd - minSizeAds * 2));
                 possibleHeights.Add(newLow);
             }
 
-            if (heightGrab.y - (heightAd + minSizeAds/2) >= minSizeAds)
+            if (heightGrab.y - (heightAd + minSizeAds * 2) >= minSizeAds)
             {
-                Vector2 newHigh = new Vector2((heightAd + minSizeAds / 2), heightGrab.y);
+                Vector2 newHigh = new Vector2((heightAd + minSizeAds * 2), heightGrab.y);
                 possibleHeights.Add(newHigh);
             }
 
+            amountAdsLeft--;
             PlaceAd(heightAd);
 
         }
@@ -93,10 +96,19 @@ public class AdsOnBuilding : MonoBehaviour
 
         float width = ad.size.x;
 
-        float posX = CenteralizedRandom.Range(-this.transform.localScale.z / 2 + width / 2, this.transform.localScale.z - width / 2);
+
+
+        float posX = CenteralizedRandom.Range((-(this.transform.localScale.z / 2)) + (width / 2), (this.transform.localScale.z / 2) - (width / 2));
+
+
 
         GameObject go = Instantiate(ad.prefab, this.transform);
-        go.transform.position = new Vector3(height, 0, posX);
-        go.transform.rotation = Quaternion.Euler(ad.rotation);
+
+        go.transform.localRotation = Quaternion.Euler(ad.rotation);
+        go.transform.localPosition = new Vector3(-(height / (transform.localScale.x)), -0.01f, posX / transform.localScale.z);
+        go.transform.localScale = new Vector3((width / transform.localScale.z), .1f, ad.size.y / transform.localScale.x);
+
+ 
+
     }
 }

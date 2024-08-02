@@ -23,7 +23,8 @@ public class FixTilingChildren : MonoBehaviour
 
         if (!tf.TryGetComponent<MaterialPropertyBlockHolder>(out mpbHolder))
             mpbHolder = tf.gameObject.AddComponent<MaterialPropertyBlockHolder>();
-        SetMpbTilingSize(mpbHolder, tf);
+        if (gameObject.tag != "NoTiling")
+            SetMpbTilingSize(mpbHolder, tf);
 
         if (tf.childCount == 0)
             return;

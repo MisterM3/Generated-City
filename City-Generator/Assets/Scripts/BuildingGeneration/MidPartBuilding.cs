@@ -30,6 +30,14 @@ public class MidPartBuilding : MonoBehaviour, IGenerateBuildingPart
 
         MakeBuilding(new Vector3(width, height, lenght), buildingPart.transform);
 
+        for (int i = buildingPart.transform.childCount - 1; i >= 0; i--)
+        {
+            if (buildingPart.transform.GetChild(i).TryGetComponent<AdsOnBuilding>(out AdsOnBuilding ads))
+            {
+                ads.Place();
+            }
+        }
+
         //buildingPart.transform.localScale = new Vector3(width, height, lenght);
         return buildingPart;
     }
