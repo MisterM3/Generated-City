@@ -6,7 +6,7 @@ using UnityEngine;
 public class SlopeBuilding : PartStrategy
 {
 
-
+    [SerializeField] GameObject extenstionPrefab;
     [SerializeField] GameObject slopeSidePrefab;
 
     private float indentation = 0;
@@ -103,7 +103,7 @@ public class SlopeBuilding : PartStrategy
 
         if (side == SlopeSide.Left || side == SlopeSide.Horizontal)
         {
-            GameObject leftSlope = Instantiate(sidePrefab, parent);
+            GameObject leftSlope = Instantiate(extenstionPrefab, parent);
             if (side == SlopeSide.Left)
                 leftSlope.transform.position = new Vector3(((width - indentation) / 2), height - heightOffset, 0);
             if (side == SlopeSide.Horizontal)
@@ -114,7 +114,7 @@ public class SlopeBuilding : PartStrategy
 
         if (side == SlopeSide.Right || side == SlopeSide.Horizontal)
         {
-            GameObject rightSlope = Instantiate(sidePrefab, parent);
+            GameObject rightSlope = Instantiate(extenstionPrefab, parent);
             if (side == SlopeSide.Right)
                 rightSlope.transform.position = new Vector3(-((width - indentation) / 2), height - heightOffset, 0);
             if (side == SlopeSide.Horizontal)
@@ -125,7 +125,7 @@ public class SlopeBuilding : PartStrategy
 
         if (side == SlopeSide.Foward || side == SlopeSide.Vertical)
         {
-            GameObject forwardSlope = Instantiate(sidePrefab, parent);
+            GameObject forwardSlope = Instantiate(extenstionPrefab, parent);
             if (side == SlopeSide.Foward)
                 forwardSlope.transform.position = new Vector3(0, height - heightOffset, (lenght - indentation) / 2);
             if (side == SlopeSide.Vertical)
@@ -136,7 +136,7 @@ public class SlopeBuilding : PartStrategy
 
         if (side == SlopeSide.Back || side == SlopeSide.Vertical)
         {
-            GameObject backSlope = Instantiate(sidePrefab, parent);
+            GameObject backSlope = Instantiate(extenstionPrefab, parent);
             if (side == SlopeSide.Back)
                 backSlope.transform.position = new Vector3(0, height - heightOffset, -(lenght - indentation) / 2);
             if (side == SlopeSide.Vertical)
@@ -262,12 +262,12 @@ public class SlopeBuilding : PartStrategy
 
         if (side == SlopeSide.Left || side == SlopeSide.Horizontal || side == SlopeSide.Right)
         {
-            GameObject forward = Instantiate(sidePrefab, parent);
+            GameObject forward = Instantiate(extenstionPrefab, parent);
             forward.transform.position = new Vector3(0, height - heightOffset, (lenght / 2));
             forward.transform.rotation = Quaternion.Euler(0, 90, -90);
             forward.transform.localScale = sideHorizontal;
 
-            GameObject back = Instantiate(sidePrefab, parent);
+            GameObject back = Instantiate(extenstionPrefab, parent);
             back.transform.position = new Vector3(0, height - heightOffset, -(lenght / 2));
             back.transform.rotation = Quaternion.Euler(0, -90, -90);
             back.transform.localScale = sideHorizontal;
@@ -277,14 +277,14 @@ public class SlopeBuilding : PartStrategy
 
             if (slopeSide == SlopeSide.Right)
             {
-                GameObject left = Instantiate(sidePrefab, parent);
+                GameObject left = Instantiate(extenstionPrefab, parent);
                 left.transform.position = new Vector3(((width - indentation) / 2), height - heightOffset, 0);
                 left.transform.rotation = Quaternion.Euler(0, 180, -90);
                 left.transform.localScale = sideVertical;
             }
             else if (slopeSide == SlopeSide.Left)
             {
-                GameObject right = Instantiate(sidePrefab, parent);
+                GameObject right = Instantiate(extenstionPrefab, parent);
                 right.transform.position = new Vector3(-((width - indentation) / 2), height - heightOffset, 0);
                 right.transform.rotation = Quaternion.Euler(0, 0, -90);
                 right.transform.localScale = sideVertical;
@@ -296,12 +296,12 @@ public class SlopeBuilding : PartStrategy
 
         if (side == SlopeSide.Foward || side == SlopeSide.Vertical || side == SlopeSide.Back)
         {
-            GameObject left = Instantiate(sidePrefab, parent);
+            GameObject left = Instantiate(extenstionPrefab, parent);
             left.transform.position = new Vector3((width / 2), height - heightOffset, 0);
             left.transform.rotation = Quaternion.Euler(0, 180, -90);
             left.transform.localScale = sideVertical;
 
-            GameObject right = Instantiate(sidePrefab, parent);
+            GameObject right = Instantiate(extenstionPrefab, parent);
             right.transform.position = new Vector3(-(width / 2), height - heightOffset, 0);
             right.transform.rotation = Quaternion.Euler(0, 0, -90);
             right.transform.localScale = sideVertical;
@@ -311,14 +311,14 @@ public class SlopeBuilding : PartStrategy
             if (slopeSide == SlopeSide.Foward)
             {
 
-                GameObject back = Instantiate(sidePrefab, parent);
+                GameObject back = Instantiate(extenstionPrefab, parent);
                 back.transform.position = new Vector3(0, height - heightOffset, -((lenght - indentation) / 2));
                 back.transform.rotation = Quaternion.Euler(0, -90, -90);
                 back.transform.localScale = sideHorizontal;
             }
             else if (slopeSide == SlopeSide.Back)
             {
-                GameObject forward = Instantiate(sidePrefab, parent);
+                GameObject forward = Instantiate(extenstionPrefab, parent);
                 forward.transform.position = new Vector3(0, height - heightOffset, ((lenght - indentation) / 2));
                 forward.transform.rotation = Quaternion.Euler(0, 90, -90);
                 forward.transform.localScale = sideHorizontal;

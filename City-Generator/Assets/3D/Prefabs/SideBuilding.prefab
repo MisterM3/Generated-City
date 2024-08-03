@@ -76,6 +76,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7799284138175953714}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b232306d9680bb341a339fa3e33833d4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 963623767664909040}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b232306d9680bb341a339fa3e33833d4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4919018600993023092}
   m_SourcePrefab: {fileID: 100100000, guid: b232306d9680bb341a339fa3e33833d4, type: 3}
 --- !u!1 &5771061405752175492 stripped
 GameObject:
@@ -95,3 +103,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500d20d66a86603408f2ca274c2d38c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mpb:
+    values:
+      color: []
+      vectors: []
+    colorKeys: 
+    colorValues: []
+    vectorKeys: 
+    vectorValues: []
+--- !u!114 &963623767664909040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5771061405752175492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dff6d7e20ac82740a6a57652787e4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minHeight: 5
+  amountAds: 5
+  possibleHeights: []
+  ads:
+  - prefab: {fileID: 4006542573362233921, guid: 3ef68b3dfa6b5bf4b9a94dbd617d1b3c,
+      type: 3}
+    size: {x: 5.292, y: 1.404}
+    rotation: {x: 0, y: 90, z: 180}
+  - prefab: {fileID: 2675100478678299674, guid: 328c2e342a844f2478c8ad941442fd0d,
+      type: 3}
+    size: {x: 2.8, y: 4}
+    rotation: {x: 0, y: 90, z: 180}
+  init: 0
+--- !u!114 &-4919018600993023092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5771061405752175492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bcc850c7aea974d88a0a4bad0e0940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 7590355080140575076, guid: 6d109e9d8ada20749b84ee3de56df3da, type: 3}
+  - {fileID: 8637287285999120744, guid: 94019838f51151445964dcf1274a380e, type: 3}
+  amountFromSides: 1
+  scaleDoor: 2
+  changePlaceDoor: 0.75

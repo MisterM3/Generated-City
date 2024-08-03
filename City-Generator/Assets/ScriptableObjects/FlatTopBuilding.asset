@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sidePrefab: {fileID: 5771061405752175492, guid: 9da54ffb9f8088740953252289aff4df,
     type: 3}
+  topPrefab: {fileID: 5771061405752175492, guid: fc233e8489231d74588663fdaf3b0658,
+    type: 3}
   cornerPrefab: {fileID: 919132149155446097, guid: c5ab003db17fa354196789ec4d14e608,
     type: 3}
   indentValues:
@@ -21,4 +23,5 @@ MonoBehaviour:
     rightIndent: 0
     forwardIndent: 0
     backwardsIndent: 0
+  minIndent: 0.5
   maxIndent: 2.5

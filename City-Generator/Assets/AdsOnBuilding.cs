@@ -46,7 +46,7 @@ public class AdsOnBuilding : MonoBehaviour
         }
 
 
-        if ((this.transform.localScale.x + minSizeAds) - (minHeight - minSizeAds) >= minSizeAds)
+        if ((this.transform.localScale.x + minSizeAds) - (minHeight - minSizeAds) >= minSizeAds * 2.5f)
         {
             possibleHeights.Clear();
             possibleHeights.Add(new Vector2(minHeight + minSizeAds, this.transform.localScale.x + minSizeAds));

@@ -221,6 +221,8 @@ public class CityGenerator : EditorWindow
         if (GUILayout.Button("test"))
         {
             MakeBase();
+            EditorUtility.SetDirty(this);
+            SceneView.RepaintAll();
         }
 
 

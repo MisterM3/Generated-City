@@ -6,6 +6,7 @@ using UnityEngine;
 public class SquareFlatTop : PartStrategy
 {
 
+    [SerializeField] GameObject topPrefab;
     [SerializeField] GameObject cornerPrefab;
 
     [SerializeField] FlatIndent indentValues;
@@ -67,22 +68,22 @@ public class SquareFlatTop : PartStrategy
         float objectWidth = size.x - indentValues.leftIndent - indentValues.rightIndent;
         float objectLenght = size.z - indentValues.forwardIndent - indentValues.backwardsIndent;
 
-        GameObject leftSlide = Instantiate(sidePrefab, parentTf);
+        GameObject leftSlide = Instantiate(topPrefab, parentTf);
         leftSlide.transform.position = new Vector3((objectWidth / 2), height, 0);
         leftSlide.transform.rotation = Quaternion.Euler(0, 180, 0);
         leftSlide.transform.localScale = new Vector3(indentValues.leftIndent / 2, leftSlide.transform.localScale.y, objectLenght / 2);
 
-        GameObject rightSlide = Instantiate(sidePrefab, parentTf);
+        GameObject rightSlide = Instantiate(topPrefab, parentTf);
         rightSlide.transform.position = new Vector3(-objectWidth / 2, height, 0);
         rightSlide.transform.rotation = Quaternion.Euler(0, 0, 0);
         rightSlide.transform.localScale = new Vector3(indentValues.rightIndent / 2, rightSlide.transform.localScale.y, objectLenght / 2);
 
-        GameObject forwardSlide = Instantiate(sidePrefab, parentTf);
+        GameObject forwardSlide = Instantiate(topPrefab, parentTf);
         forwardSlide.transform.position = new Vector3(0, height, objectLenght / 2);
         forwardSlide.transform.rotation = Quaternion.Euler(0, 90, 0);
         forwardSlide.transform.localScale = new Vector3(indentValues.forwardIndent / 2, forwardSlide.transform.localScale.y, objectWidth / 2);
 
-        GameObject backSlide = Instantiate(sidePrefab, parentTf);
+        GameObject backSlide = Instantiate(topPrefab, parentTf);
         backSlide.transform.position = new Vector3(0, height, -objectLenght / 2);
         backSlide.transform.rotation = Quaternion.Euler(0, -90, 0);
         backSlide.transform.localScale = new Vector3(indentValues.backwardsIndent / 2, forwardSlide.transform.localScale.y, objectWidth / 2);

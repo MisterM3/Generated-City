@@ -69,7 +69,8 @@ public class BuildingGenerator : MonoBehaviour
         
         if (tf.TryGetComponent<Renderer>(out Renderer rend))
         {
-            rend.sharedMaterial = mat;
+            if (tf.tag != "NoTiling")
+                rend.sharedMaterial = mat;
         }
 
         for(int i = 0; i != tf.childCount; i++)

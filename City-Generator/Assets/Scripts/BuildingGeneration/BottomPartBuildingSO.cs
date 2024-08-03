@@ -49,7 +49,22 @@ public class BottomPartBuilding : MonoBehaviour, IGenerateBuildingPart
             }
         }
 
-        return bottomStrategy.MakeBuildingPart(size);
+        GameObject go = bottomStrategy.MakeBuildingPart(size);
+
+        for (int i = go.transform.childCount - 1; i >= 0; i--)
+        {
+            if (go.transform.GetChild(i).TryGetComponent<AdsOnBuilding>(out AdsOnBuilding ads))
+            {
+                ads.Place();
+            }
+
+            if (go.transform.GetChild(i).TryGetComponent<PlaceDoor>(out PlaceDoor door))
+            {
+                door.PlaceDoorItem();
+            }
+        }
+
+        return go;
     }
 
 }
