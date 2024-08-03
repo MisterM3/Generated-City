@@ -151,7 +151,7 @@ MonoBehaviour:
   CurrentStatePreset: " <sbspreset pkgurl=\"pkg://Window_Walls_Small\" label=\"\"
     >\n  <presetinput identifier=\"$outputsize\" uid=\"2479890181\" type=\"8\" value=\"10,10\"
     />\n  <presetinput identifier=\"x_amount\" uid=\"4081399990\" type=\"4\" value=\"3\"
-    />\n  <presetinput identifier=\"y_amount\" uid=\"4081399995\" type=\"4\" value=\"1\"
+    />\n  <presetinput identifier=\"y_amount\" uid=\"4081399995\" type=\"4\" value=\"4\"
     />\n  <presetinput identifier=\"Size_xy\" uid=\"4081387122\" type=\"1\" value=\"0.8,0.95\"
     />\n  <presetinput identifier=\"outputcolor\" uid=\"4081234813\" type=\"3\" value=\"0.678431,0.65098,0.517647,1\"
     />\n  <presetinput identifier=\"outputcolor_1\" uid=\"4081237793\" type=\"0\"
@@ -244,7 +244,7 @@ MonoBehaviour:
           GuiDescription: Amount of patterns on the Y axis.
           Type: 4
           WidgetType: 1
-        Data: 1
+        Data: 4
         NumericalDescription:
           DefaultValue: 3
           MinValue: 1

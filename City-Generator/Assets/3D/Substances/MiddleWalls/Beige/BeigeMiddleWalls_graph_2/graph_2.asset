@@ -150,9 +150,8 @@ MonoBehaviour:
   HasThumbnail: 1
   CurrentStatePreset: " <sbspreset pkgurl=\"pkg://Window_Walls_Medium\" label=\"\"
     >\n  <presetinput identifier=\"$outputsize\" uid=\"3838835021\" type=\"8\" value=\"10,10\"
-    />\n  <presetinput identifier=\"x_amount\" uid=\"2220547838\" type=\"4\" value=\"3\"
-    />\n  <presetinput identifier=\"y_amount\" uid=\"2220547827\" type=\"4\" value=\"1\"
-    />\n  <presetinput identifier=\"Size_xy\" uid=\"2220548154\" type=\"1\" value=\"0.5,0.95\"
+    />\n  <presetinput identifier=\"y_amount\" uid=\"2220547827\" type=\"4\" value=\"2\"
+    />\n  <presetinput identifier=\"Size_xy\" uid=\"2220548154\" type=\"1\" value=\"0.76,0.87\"
     />\n  <presetinput identifier=\"outputcolor\" uid=\"2220709173\" type=\"3\" value=\"0.678431,0.65098,0.517647,1\"
     />\n  <presetinput identifier=\"outputcolor_1\" uid=\"2220710249\" type=\"0\"
     value=\"0.24\" />\n  <presetinput identifier=\"outputcolor_2\" uid=\"2220710534\"
@@ -222,7 +221,7 @@ MonoBehaviour:
           GuiDescription: Amount of patterns on the X axis.
           Type: 4
           WidgetType: 1
-        Data: 3
+        Data: 1
         NumericalDescription:
           DefaultValue: 1
           MinValue: 1
@@ -244,7 +243,7 @@ MonoBehaviour:
           GuiDescription: Amount of patterns on the Y axis.
           Type: 4
           WidgetType: 1
-        Data: 1
+        Data: 2
         NumericalDescription:
           DefaultValue: 3
           MinValue: 1
@@ -266,7 +265,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 1
           WidgetType: 1
-        Data: {x: 0.5, y: 0.95}
+        Data: {x: 0.76, y: 0.87}
         NumericalDescription:
           DefaultValue: {x: 0.95, y: 0.2}
           MinValue: {x: 0, y: 0}
