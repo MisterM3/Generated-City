@@ -52,6 +52,7 @@ public class CityGenerator : EditorWindow
     public GameObject meshRoad;
 
     public GameObject buildingObject;
+    public bool showPreview = true;
 
 
     private SerializedProperty propMeshPlane;
@@ -65,6 +66,8 @@ public class CityGenerator : EditorWindow
     private SerializedProperty propSizeFromStreet;
     private SerializedProperty propMaxStreetDeviation;
 
+    private SerializedProperty propDrawPreview;
+
 
 
     private void OnEnable()
@@ -73,11 +76,23 @@ public class CityGenerator : EditorWindow
         SceneView.duringSceneGui += DrawPreview;
 
         CenteralizedRandom.Init(seed);
+        string objectName = EditorPrefs.GetString("parent");
+
+        if (String.IsNullOrEmpty(objectName))
+            return;
+
+        parentObject = GameObject.Find(objectName).transform;
+
     }
 
     private void OnDisable()
     {
         SceneView.duringSceneGui -= DrawPreview;
+
+        if (parentObject == null)
+            return;
+        EditorPrefs.SetString("parent", parentObject.name);
+
     }
     private void SetupSerializedObject()
     {
@@ -98,13 +113,16 @@ public class CityGenerator : EditorWindow
         propMeshCrossRoad = so.FindProperty(nameof(meshCrossRoad));
         propMeshRoad = so.FindProperty(nameof(meshRoad));
         propBuildingObject = so.FindProperty(nameof(buildingObject));
+        propDrawPreview = so.FindProperty(nameof(showPreview));
     }
 
     private void DrawPreview(SceneView sceneView)
     {
         if (parentObject == null)
             return;
-        return;
+
+        if (!showPreview)
+            return;
     
         DrawRoads();
         DrawHouses();
@@ -216,7 +234,7 @@ public class CityGenerator : EditorWindow
         EditorGUILayout.PropertyField(propMeshRoad);
 
         EditorGUILayout.Space();
-        EditorGUILayout.PropertyField(propBuildingObject);
+        EditorGUILayout.PropertyField(propDrawPreview);
 
         if (GUILayout.Button("test"))
         {
@@ -278,8 +296,6 @@ public class CityGenerator : EditorWindow
         
         for (int i = tf.childCount - 1; i >= 0; i--)
         {
-         //   Debug.Log(i);
-         //   Debug.Log(parentObject.childCount);
             SetStaticFlagsChildrenRecursive(tf.GetChild(i), flags);
         }
     }
