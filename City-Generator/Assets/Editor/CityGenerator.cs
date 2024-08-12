@@ -215,28 +215,29 @@ public class CityGenerator : EditorWindow
         EditorGUILayout.Space();
         EditorGUILayout.PropertyField(propHorizontalLines);
         EditorGUILayout.PropertyField(propVerticalLines);
-        EditorGUILayout.PropertyField(propWidthRoad);
         EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Size");
+        EditorGUILayout.PropertyField(propWidthRoad);
         EditorGUILayout.PropertyField(propWidthPlot);
         EditorGUILayout.PropertyField(propHeightPlot);
 
         EditorGUILayout.Space();
-        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Building Values");
         EditorGUILayout.PropertyField(propMinHeight);
         EditorGUILayout.PropertyField(propMaxHeight);
         EditorGUILayout.PropertyField(propSizeFromStreet);
         EditorGUILayout.PropertyField(propMaxStreetDeviation);
 
         EditorGUILayout.Space();
-        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Prefabs");
         EditorGUILayout.PropertyField(propMeshPlane);
         EditorGUILayout.PropertyField(propMeshCrossRoad);
         EditorGUILayout.PropertyField(propMeshRoad);
-
+        EditorGUILayout.PropertyField(propBuildingObject);
         EditorGUILayout.Space();
         EditorGUILayout.PropertyField(propDrawPreview);
 
-        if (GUILayout.Button("test"))
+        if (GUILayout.Button("Generate City"))
         {
             MakeBase();
             EditorUtility.SetDirty(this);
