@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f25881daad97d1d4391e9bc36b0d6ea0
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: 7c9799e615cfaf24f84e69e47ee75207, type: 2}
+  - {fileID: 11400000, guid: 7ada6c1e0003ca1499153c14f1f5cf31, type: 2}
+  - {fileID: 11400000, guid: 66312b0adeb74424b9a1d151927682e3, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/3D/Substances/BottomWalls/Beige/BeigeWalls.sbsar

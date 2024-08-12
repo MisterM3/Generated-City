@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: abede9068fac8b645b8d61647d5bb56c
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: 98ebb07132689b240acc513eece6594f, type: 2}
+  - {fileID: 11400000, guid: 6a384c83dc59d214db2b77af04a49fed, type: 2}
+  - {fileID: 11400000, guid: 9a9f943d5e882ac4784e2508a7c9005a, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/3D/Substances/BottomWalls/DarkBlue/DarkBlueWalls.sbsar

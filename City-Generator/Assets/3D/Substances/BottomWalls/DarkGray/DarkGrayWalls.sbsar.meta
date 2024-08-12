@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8b3291eca229e1542b4e3c046e5651dc
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: dda12f74ff9116a42b23482252b2c482, type: 3}
+  _instancesCopy:
+  - {fileID: 11400000, guid: 17854e819b9ba2144b0f7de07f91c896, type: 2}
+  - {fileID: 11400000, guid: 99599684321c9ca41bfd7939cfb9b458, type: 2}
+  - {fileID: 11400000, guid: fbabc5c81aba4ac4c8a4e8133560f33f, type: 2}
+  _fileAsset: {instanceID: 0}
+  _assetPath: Assets/3D/Substances/BottomWalls/DarkGray/DarkGrayWalls.sbsar
