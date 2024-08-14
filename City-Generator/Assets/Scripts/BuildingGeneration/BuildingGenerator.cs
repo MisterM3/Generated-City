@@ -126,7 +126,6 @@ public class BuildingGenerator : MonoBehaviour
             return;
 
         generateMiddle.SetDimensions(new Vector3(_widthBuilding, (_heightBuilding / 3f) * 2, _lenghtBuilding));
-        generateMiddle.RandomizeIndentation();
         GameObject buildingMiddle = generateMiddle.GenerateBuildingPart();
 
         RecursiveSetMaterialDifferntMid(buildingMiddle.transform);
@@ -178,7 +177,6 @@ public class BuildingGenerator : MonoBehaviour
             return;
 
         generateMiddle.SetDimensions(new Vector3(_widthBuilding, (_heightBuilding / 3f) * 2, _lenghtBuilding));
-        generateMiddle.RandomizeIndentation();
         GameObject buildingMiddle = generateMiddle.GenerateBuildingPart();
 
         RecursiveSetMaterialDifferntMid(buildingMiddle.transform);

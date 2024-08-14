@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MidPartBuilding : MonoBehaviour, IGenerateBuildingPart
 {
@@ -8,7 +9,7 @@ public class MidPartBuilding : MonoBehaviour, IGenerateBuildingPart
     private float height = 4f;
     private float lenght = 5f;
 
-    public GameObject test;
+    [SerializeField] private GameObject sidePrefab;
 
     public void SetDimensions(Vector3 dimensions)
     {
@@ -17,10 +18,6 @@ public class MidPartBuilding : MonoBehaviour, IGenerateBuildingPart
         lenght = dimensions.z;
     }
 
-    public void RandomizeIndentation()
-    {
-        // isIndented;
-    }
 
     public GameObject GenerateBuildingPart()
     {
@@ -51,18 +48,18 @@ public class MidPartBuilding : MonoBehaviour, IGenerateBuildingPart
         height = size.y;
         lenght = size.z;
 
-        GameObject left = Instantiate(test, parent);
+        GameObject left = Instantiate(sidePrefab, parent);
         left.transform.position = new Vector3(-width / 2, 0, 0);
         left.transform.localScale = new Vector3(height / 2, 1, lenght / 2);
-        GameObject right = Instantiate(test, parent);
+        GameObject right = Instantiate(sidePrefab, parent);
         right.transform.position = new Vector3(width / 2, 0, 0);
         right.transform.rotation = Quaternion.Euler(0, 180, -90);
         right.transform.localScale = new Vector3(height / 2, 1, lenght / 2);
-        GameObject forward = Instantiate(test, parent);
+        GameObject forward = Instantiate(sidePrefab, parent);
         forward.transform.position = new Vector3(0, 0, -lenght / 2);
         forward.transform.rotation = Quaternion.Euler(0, -90, -90);
         forward.transform.localScale = new Vector3(height / 2, 1, width / 2);
-        GameObject back = Instantiate(test, parent);
+        GameObject back = Instantiate(sidePrefab, parent);
         back.transform.position = new Vector3(0, 0, lenght / 2);
         back.transform.rotation = Quaternion.Euler(0, 90, -90);
         back.transform.localScale = new Vector3(height / 2, 1, width / 2);
