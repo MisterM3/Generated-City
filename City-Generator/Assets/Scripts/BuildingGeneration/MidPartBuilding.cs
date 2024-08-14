@@ -10,8 +10,6 @@ public class MidPartBuilding : MonoBehaviour, IGenerateBuildingPart
 
     public GameObject test;
 
-
-
     public void SetDimensions(Vector3 dimensions)
     {
         width = dimensions.x;

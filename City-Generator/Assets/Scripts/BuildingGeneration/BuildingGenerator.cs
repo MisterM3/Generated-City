@@ -149,6 +149,57 @@ public class BuildingGenerator : MonoBehaviour
 
     }
 
+    public void GenerateBuildingNotRandom()
+    {
+        this.transform.RemoveAllChildren();
+
+
+        if (generateBottom == null)
+            return;
+
+        foreach (MaterialsBuilding matBuilding in buildingMaterials)
+        {
+            if (matBuilding.color == color)
+            {
+                currentMaterials = matBuilding;
+                break;
+            }
+        }
+
+
+        generateBottom.SetDimensions(new Vector3(_widthBuilding, _heightBuilding / 3f, _lenghtBuilding));
+        GameObject buildingBottom = generateBottom.GenerateBuildingPart();
+
+        RecursiveSetMaterialBottom(buildingBottom.transform, currentMaterials.bottomMaterial.RandomItem());
+
+        buildingBottom.transform.SetParent(this.transform, false);
+
+        if (generateMiddle == null)
+            return;
+
+        generateMiddle.SetDimensions(new Vector3(_widthBuilding, (_heightBuilding / 3f) * 2, _lenghtBuilding));
+        generateMiddle.RandomizeIndentation();
+        GameObject buildingMiddle = generateMiddle.GenerateBuildingPart();
+
+        RecursiveSetMaterialDifferntMid(buildingMiddle.transform);
+
+        buildingMiddle.transform.SetParent(this.transform, false);
+        buildingMiddle.transform.position = new Vector3(buildingMiddle.transform.position.x, buildingBottom.transform.position.y + _heightBuilding / 3f, buildingMiddle.transform.position.z);
+
+        generateTop.SetDimensions(new Vector3(_widthBuilding, 1, _lenghtBuilding));
+        GameObject buildingTop = generateTop.GenerateBuildingPart();
+        buildingTop.transform.SetParent(this.transform, false);
+        buildingTop.transform.position = new Vector3(buildingTop.transform.position.x, _heightBuilding, buildingTop.transform.position.z);
+
+        if (buildingTop.TryGetComponent<Renderer>(out Renderer rend))
+        {
+            rend.sharedMaterial = currentMaterials.topMaterial;
+        }
+
+        fixTiling.FixTilingChilds();
+
+    }
+
     public void OnEnable()
     {
         GenerateBuilding();
